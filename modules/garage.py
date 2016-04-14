@@ -19,7 +19,7 @@ class Garage:
     def toggleDoor(self):
         try:
             for pin in self.pinList:
-                GPIO.output(pin, GPIO.LOW)
+                GPIO.output(pin, GPIO.HIGH)
 
             time.sleep(.2)
             GPIO.cleanup()
@@ -33,6 +33,6 @@ class Garage:
         try:
             for pin in self.pinList:
                 GPIO.setup(pin, GPIO.OUT)
-                GPIO.output(pin, GPIO.HIGH)
+                GPIO.output(pin, GPIO.LOW)
         except:
             print 'Warning: Failed To Clean Up.'
