@@ -15,7 +15,7 @@ $(document).ready(function () {
             if (day < 10) day = "0" + day;
 
             var today = year + "-" + month + "-" + day;       
-            $("#tempDate").attr("value", "2011-01-01");
+            $("#tempDate").attr("value", '2011-01-01');
 
         } else {
             $('.date-time').addClass("hidden");
