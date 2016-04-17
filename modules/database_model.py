@@ -8,6 +8,7 @@ db = SQLAlchemy(app)
 
 
 class UserModel(db.Model):
+    __tablename__ = 'usermodel'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
     password = db.Column(db.String(120), unique=True)
@@ -22,6 +23,7 @@ class UserModel(db.Model):
         self.experationDate = experationDate
 
 class weekDay(db.Model):
+    __tablename__ = 'weekday'
     id = db.Column(db.Integer, primary_key=True)
     #Defining the Foreign Key on the Child Table
     dayname = db.Column(db.String(15))
