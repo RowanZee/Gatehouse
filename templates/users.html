@@ -50,8 +50,9 @@
 								<span>Admin User</span>
 							</div>
 						{% endif %}
-						  {% for weekday in user.weekDays.all()%}
-							<i class="fa fa-clock-o"></i>
+						  {% for weekday in user.weekday.all()%}
+						  {{weekday.id}}
+	
 						  {% endfor %}
 						<input type="submit" class="button update-user" value="Update User">
 					</form>
