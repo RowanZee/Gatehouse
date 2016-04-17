@@ -13,7 +13,7 @@ class UserModel(db.Model):
     password = db.Column(db.String(120), unique=True)
     admin = db.Column(db.Boolean())
     experationDate = db.Column(db.String(80))
-	weekday = db.relationship('weekDays', backref="usermodels", cascade="all, delete-orphan" , lazy='dynamic')
+	weekday = db.relationship('weekDay', backref="usermodel", cascade="all, delete-orphan" , lazy='dynamic')
 
 
     def __init__(self, username, password, admin, experationDate):
@@ -24,8 +24,9 @@ class UserModel(db.Model):
 
 
 class weekDay(db.Model):
-	id=db.Column(dn.Integer, primary_key=True)
+	id=db.Column(db.Integer, primary_key=True)
 	#Defining the Foreign Key on the Child Table
+	dayname = db.Column(db.String(15))
 	usermodel_id = db.Column(db.Integer, db.ForeignKey('UserModel.id'))
 	
 	
