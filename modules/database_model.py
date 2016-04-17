@@ -21,13 +21,12 @@ class UserModel(db.Model):
         self.admin = admin
         self.experationDate = experationDate
 
-
 class weekDay(db.Model):
-	id=db.Column(db.Integer, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True)
 	#Defining the Foreign Key on the Child Table
 	dayname = db.Column(db.String(15))
 	usermodel_id = db.Column(db.Integer, db.ForeignKey('UserModel.id'))
 	
-	 def __init__(self, dayname):
-        self.dayname = dayname
+	def __init__(self, dayname):
+		self.dayname = dayname
 	
