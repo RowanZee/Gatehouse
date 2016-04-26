@@ -61,6 +61,7 @@ class Database:
             db.session.commit()
             return True
         except:
+            db.session.rollback()
             return False
 
     # GET USER
