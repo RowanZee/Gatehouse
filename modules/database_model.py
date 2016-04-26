@@ -27,8 +27,8 @@ class weekDay(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     #Defining the Foreign Key on the Child Table
     dayname = db.Column(db.String(15))
-	checked = db.Column(db.Boolean())
-	#needs times 
+    checked = db.Column(db.Boolean())
+    #needs times 
     usermodel_id = db.Column(db.Integer, db.ForeignKey('usermodel.id'))
 
     def __init__(self, dayname):
