@@ -28,6 +28,15 @@ class Database:
         except:
             return False
 
+    # CREATE NEW USER
+    def createNewUser(self,usermod):
+    try:
+        db.session.add(usermod)
+        db.session.commit()
+        return True
+    except:
+        return False
+
     # EDIT USER
     def editUser(self, userID, username, password, admin, experationDate):
         try:
