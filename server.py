@@ -24,6 +24,7 @@ SECRET_KEY = str(random.random())
 
 # Init App
 app = Flask(__name__)
+app.config['SQLALCHEMY_ECHO'] = True
 app.config.from_object(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./tmp/database.db'
 
