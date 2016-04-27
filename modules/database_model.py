@@ -31,5 +31,6 @@ class weekDay(db.Model):
     #needs times 
     usermodel_id = db.Column(db.Integer, db.ForeignKey('usermodel.id'))
 
-    def __init__(self, dayname):
+    def __init__(self, dayname, checked):
         self.dayname = dayname
+		self.checked = checked
