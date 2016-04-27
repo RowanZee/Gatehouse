@@ -33,4 +33,4 @@ class weekDay(db.Model):
 
     def __init__(self, dayname, checked):
         self.dayname = dayname
-		self.checked = checked
+        self.checked = checked
