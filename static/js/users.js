@@ -22,6 +22,16 @@ $(document).ready(function () {
     		$('.date-time').removeClass("visible");
         }
     });
+	
+	$('.monallday').change(function(){
+		if($(this).is(":checked")) {
+            $('.montime').removeClass("visible");
+    		$('.montime').addClass("hidden");
+        } else {
+            $('.montime').addClass("visible");
+    		$('.montime').removeClass("hidden");
+        }
+	});
 
     //Accordian
     $(function() { $( "#accordion" ).accordion({
