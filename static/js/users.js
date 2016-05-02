@@ -25,11 +25,15 @@ $(document).ready(function () {
 	
 	$('.monallday').change(function(){
 		if($(this).is(":checked")) {
-            // $('.montime').removeClass("visible");
-    		// $('.montime').addClass("hidden");
+             $('.montimefrom').removeClass("enabled");
+			 $('.montimeto').removeClass("enabled");
+             $('.montimefrom').addclass("disabled");
+			 $('.montimeto').addclass("disabled");
         } else {
-            // $('.montime').addClass("visible");
-    		// $('.montime').removeClass("hidden");
+             $('.montimefrom').removeClass("disabled");
+			 $('.montimeto').removeClass("disabled");
+             $('.montimefrom').addclass("enabled");
+			 $('.montimeto').addclass("enabled");
         }
 	});
 	$('.tueallday').change(function(){
