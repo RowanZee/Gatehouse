@@ -26,10 +26,10 @@ $(document).ready(function () {
 	$('.monallday').change(function(){
 		if($(this).is(":checked")) {
 			 //$('.montime').disabled = true;
-			 document.getElementById('montime').disabled = true;
+			 document.getElementsByClassName('montime').disabled = true;
         } else {
              //$('.montime').disabled = false;
-			 document.getElementById('montime').disabled = false;
+			 document.getElementsByClassName('montime').disabled = false;
         }
 	});
 	$('.tueallday').change(function(){
