@@ -22,15 +22,15 @@
 				<div class="date-time hidden">
 				
 				<div id="accordion">
-					<h3 class="accordian_{{ user.id }}">
+					<h3 class="accordian_2">
 						<span>ACCTEST</span>
 						<div>
-							<i data-id" class="fa fa-trash-o"></i>
+							<i class="fa fa-trash-o"></i>
 						</div>
 					</h3>
-					<div class="accordian_{{ user.id }}">
-						<form class="edit-user" action="{{ url_for('edituser') }}?userID={{ user.id }}" method="post">
-							<input type="text" class="username" placeholder="{{ user.username }}" name="username">
+					<div class="accordian_2">
+						<form class="edit-user" method="post">
+							<input type="text" class="username"  name="username">
 							<input type="password" class="password" placeholder="New Password" name="password">
 							<input type="submit" class="button update-user" value="Update User">
 						</form>
