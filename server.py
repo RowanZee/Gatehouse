@@ -9,6 +9,7 @@ from modules.user import User
 from modules.database import Database
 from modules.garage import Garage
 from modules.settings import Settings
+from collections import namedtuple
 
 
 # GLOBAL VARIABES
@@ -165,6 +166,7 @@ def users():
     #check Monday details
     #Is it checked
     daycheckname = 'moncheck'
+
     if request.form.get(daycheckname):
         monchecked = True
     else:
@@ -193,6 +195,13 @@ def users():
     return render_template('users.html', users=database.userList(),
                            success=success)
 
+def getweekday(dayname):
+    dayinfo = namedtuple("info", ["isactive"])
+    if request.form.get(daycheckname):
+        dayactive = True
+    else:
+        dayactive = False
+    return dayinfo(dayactive)
 
 @app.route('/edituser/', methods=['POST'])
 # GET - None
