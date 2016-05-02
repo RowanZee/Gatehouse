@@ -167,10 +167,12 @@ def users():
     #Is it checked
     daycheckname = 'moncheck'
 
-    if request.form.get(daycheckname):
-        monchecked = True
-    else:
-        monchecked = False
+    # if request.form.get(daycheckname):
+        # monchecked = True
+    # else:
+        # monchecked = False
+    mondayInfo = getweekday(daycheckname)
+    monchecked = mondayInfo.isactive
 
     # Is all day checked
     if request.form.get('monallday'):
@@ -197,7 +199,7 @@ def users():
 
 def getweekday(dayname):
     dayinfo = namedtuple("info", ["isactive"])
-    if request.form.get(daycheckname):
+    if request.form.get(dayname):
         dayactive = True
     else:
         dayactive = False
