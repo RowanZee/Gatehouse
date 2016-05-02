@@ -336,7 +336,7 @@ def toggledoor():
         return redirect(url_for('login'))
 
     username = request.form['username']
-    return render_template('index.html', error="RIWAN")
+    return redirect(url_for('index', error="ROWAN"))
 
     # Toggles Door
     #garage.toggleDoor()
