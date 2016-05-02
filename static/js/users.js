@@ -25,11 +25,9 @@ $(document).ready(function () {
 	
 	$('.monallday').change(function(){
 		if($(this).is(":checked")) {
-			 $('.montime').removeClass("enabled");
-			 $('.montime').addClass("disabled");
+			 $('.montime').disabled = true;
         } else {
-             $('.montime').removeClass("disabled");
-             $('.montime').addClass("enabled");
+             $('.montime').disabled = false;
         }
 	});
 	$('.tueallday').change(function(){
