@@ -84,6 +84,12 @@ form input.button {
   width: 100%;
 }
 
+form input[type="time"] {
+    width: 120px;
+    margin-left: 35px;
+	color:red;
+}
+
 .ui-accordion-header.ui-state-default.ui-accordion-icons {
     border-color: #757575;
     color: #757575;
