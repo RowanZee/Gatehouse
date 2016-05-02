@@ -29,8 +29,8 @@ class weekDay(db.Model):
     dayname = db.Column(db.String(15))
     checked = db.Column(db.Boolean())
     allday = db.Column(db.Boolean())
-    startTime = db.Column(db.DateTime())
-    endTime = db.Column(db.DateTime())
+    startTime = db.Column(db.String(20))
+    endTime = db.Column(db.String(20))
     usermodel_id = db.Column(db.Integer, db.ForeignKey('usermodel.id'))
 
     def __init__(self, dayname, checked, allday,startTime, endTime):
