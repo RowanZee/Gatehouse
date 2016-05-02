@@ -30,10 +30,10 @@ class Database:
             return False
 
     # CREATE NEW USER
-    def createNewUser(self, username, password, admin, experationDate, day1, day2):
+    def createNewUser(self, username, password, admin, experationDate, day1, day2, day3, day4, day5, day6, day7):
         try:
             newUser = UserModel(username, password, admin, experationDate)
-            newUser.weekday = [day1, day2]
+            newUser.weekday = [day1, day2, day3, day4, day5, day6, day7]
             db.session.add(newUser)
             db.session.commit()
             return True

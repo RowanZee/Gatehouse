@@ -168,19 +168,54 @@ def users():
     alldayactive = 'monallday'
     fromdaytime = 'montimefrom'
     todaytime = 'montimeto'
-
     mondayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
     #Tuesday details
     daycheckname = 'tuecheck'
     alldayactive = 'tueallday'
     fromdaytime = 'tuetimefrom'
     todaytime = 'tuetimeto'
-
     tuesdayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
+    #Wednesday details
+    daycheckname = 'wedcheck'
+    alldayactive = 'wedallday'
+    fromdaytime = 'wedtimefrom'
+    todaytime = 'wedtimeto'
+    wednesdayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime
+    #Thursday details
+    daycheckname = 'thucheck'
+    alldayactive = 'thuallday'
+    fromdaytime = 'thutimefrom'
+    todaytime = 'thutimeto'
+    thursdayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
+    #Friday details
+    daycheckname = 'fricheck'
+    alldayactive = 'friallday'
+    fromdaytime = 'fritimefrom'
+    todaytime = 'fritimeto'
+    fridayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
+    #Saturday details
+    daycheckname = 'satcheck'
+    alldayactive = 'satallday'
+    fromdaytime = 'sattimefrom'
+    todaytime = 'sattimeto'
+    saturdayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
+    #Sunday details
+    daycheckname = 'suncheck'
+    alldayactive = 'sunallday'
+    fromdaytime = 'suntimefrom'
+    todaytime = 'suntimeto'
+    sundayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
+
+
 
     # create days
     monday = database.createDay('Monday', mondayInfo.isactive, mondayInfo.isalldayactive, mondayInfo.fromtime, mondayInfo.totime)
     tuesday = database.createDay('Tuesday', tuesdayInfo.isactive, tuesdayInfo.isalldayactive, tuesdayInfo.fromtime, tuesdayInfo.totime)
+    wednesday = database.createDay('Wednesday', wednesdayInfo.isactive, wednesdayInfo.isalldayactive, wednesdayInfo.fromtime, wednesdayInfo.totime)
+    thursday = database.createDay('Thursday', thursdayInfo.isactive, thursdayInfo.isalldayactive, thursdayInfo.fromtime, thursdayInfo.totime)
+    friday = database.createDay('Friday', fridayInfo.isactive, fridayInfo.isalldayactive, fridayInfo.fromtime, fridayInfo.totime)
+    saturday = database.createDay('Saturday', saturdayInfo.isactive, saturdayInfo.isalldayactive, saturdayInfo.fromtime, saturdayInfo.totime)
+    sunday = database.createDay('Sunday', sundayInfo.isactive, sundayInfo.isalldayactive, sundayInfo.fromtime, sundayInfo.totime)
 
 
     # Creates user - add in check for false return
