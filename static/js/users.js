@@ -25,11 +25,11 @@ $(document).ready(function () {
 	
 	$('.monallday').change(function(){
 		if($(this).is(":checked")) {
-            $('.montime').removeClass("visible");
-    		$('.montime').addClass("hidden");
+            // $('.montime').removeClass("visible");
+    		// $('.montime').addClass("hidden");
         } else {
-            $('.montime').addClass("visible");
-    		$('.montime').removeClass("hidden");
+            // $('.montime').addClass("visible");
+    		// $('.montime').removeClass("hidden");
         }
 	});
 	$('.tueallday').change(function(){
