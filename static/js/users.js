@@ -38,56 +38,80 @@ $(document).ready(function () {
 	});
 	$('.tueallday').change(function(){
 		if($(this).is(":checked")) {
-            $('.tuetime').removeClass("visible");
-    		$('.tuetime').addClass("hidden");
+			var inputs = document.getElementsByClassName('tuetime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = true;
+			}
         } else {
-            $('.tuetime').addClass("visible");
-    		$('.tuetime').removeClass("hidden");
+			var inputs = document.getElementsByClassName('tuetime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = false;
+			}
         }
 	});
 	$('.wedallday').change(function(){
 		if($(this).is(":checked")) {
-            $('.wedtime').removeClass("visible");
-    		$('.wedtime').addClass("hidden");
+			var inputs = document.getElementsByClassName('wedtime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = true;
+			}
         } else {
-            $('.wedtime').addClass("visible");
-    		$('.wedtime').removeClass("hidden");
+			var inputs = document.getElementsByClassName('wedtime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = false;
+			}
         }
 	});
 	$('.thuallday').change(function(){
 		if($(this).is(":checked")) {
-            $('.thutime').removeClass("visible");
-    		$('.thutime').addClass("hidden");
+ 			var inputs = document.getElementsByClassName('thutime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = true;
+			}
         } else {
-            $('.thutime').addClass("visible");
-    		$('.thutime').removeClass("hidden");
+			var inputs = document.getElementsByClassName('thutime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = false;
+			}
         }
 	});
 	$('.friallday').change(function(){
 		if($(this).is(":checked")) {
-            $('.fritime').removeClass("visible");
-    		$('.fritime').addClass("hidden");
+			var inputs = document.getElementsByClassName('fritime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = true;
+			}
         } else {
-            $('.fritime').addClass("visible");
-    		$('.fritime').removeClass("hidden");
+			var inputs = document.getElementsByClassName('fritime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = false;
+			}
         }
 	});
 	$('.satallday').change(function(){
 		if($(this).is(":checked")) {
-            $('.sattime').removeClass("visible");
-    		$('.sattime').addClass("hidden");
+			var inputs = document.getElementsByClassName('sattime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = true;
+			}
         } else {
-            $('.sattime').addClass("visible");
-    		$('.sattime').removeClass("hidden");
+ 			var inputs = document.getElementsByClassName('sattime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = false;
+			}
         }
 	});
 	$('.sunallday').change(function(){
 		if($(this).is(":checked")) {
-            $('.suntime').removeClass("visible");
-    		$('.suntime').addClass("hidden");
+			var inputs = document.getElementsByClassName('suntime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = true;
+			}
         } else {
-            $('.suntime').addClass("visible");
-    		$('.suntime').removeClass("hidden");
+			var inputs = document.getElementsByClassName('suntime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = false;
+			}
         }
 	});
 
