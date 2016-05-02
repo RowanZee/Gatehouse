@@ -167,22 +167,21 @@ def users():
     #Is it checked
     daycheckname = 'moncheck'
     alldayactive = 'monallday'
+    fromdaytime = 'montimefrom'
+    todaytime = 'montimeto'
 
-    mondayInfo = getweekday(daycheckname, alldayactive)
+    mondayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
 
 
     monchecked = mondayInfo.isactive
     monalldaychecked = mondayInfo.isalldayactive
+    monstartime = mondayInfo.fromtime
+    monendtime = mondayInfo.totime
 
-    # # Is all day checked
-    # if request.form.get('monallday'):
-        # monalldaychecked = True
-    # else:
-        # monalldaychecked = False
 
     # Retrieve times
-    monstartime = request.form.get('montimefrom')
-    monendtime = request.form.get('montimeto')
+    #monstartime = request.form.get('montimefrom')
+    #monendtime = request.form.get('montimeto')
 
     # create days
     monday = database.createDay('Monday', monchecked, monalldaychecked, monstartime, monendtime)
@@ -197,8 +196,8 @@ def users():
     return render_template('users.html', users=database.userList(),
                            success=success)
 
-def getweekday(dayActive, alldayActive):
-    dayinfo = namedtuple("info", ["isactive", "isalldayactive"])
+def getweekday(dayActive, alldayActive, timefrom, timeto):
+    dayinfo = namedtuple("info", ["isactive", "isalldayactive", "fromtime", "totime"])
     # Check if the day is active
     if request.form.get(dayActive):
         dayactive = True
@@ -209,7 +208,9 @@ def getweekday(dayActive, alldayActive):
         alldayActive = True
     else:
         alldayActive = False
-    return dayinfo(dayactive, alldayActive)
+    fromTime = request.form.get(timefrom)
+    toTime = request.form.get(timeto)
+    return dayinfo(dayactive, alldayActive, fromTime, toTime)
 
 @app.route('/edituser/', methods=['POST'])
 # GET - None
