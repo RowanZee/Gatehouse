@@ -29,7 +29,7 @@
 						</div>
 					</h3>
 					<div class="accordian_2">
-						<form class="edit-user" method="post">
+						<form class="edit-user" action="{{ url_for('users') }}" method="post">
 							<input type="text" class="username"  name="username">
 							<input type="password" class="password" placeholder="New Password" name="password">
 							<input type="submit" class="button update-user" value="Update User">
