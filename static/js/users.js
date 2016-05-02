@@ -25,11 +25,15 @@ $(document).ready(function () {
 	
 	$('.monallday').change(function(){
 		if($(this).is(":checked")) {
-			 //$('.montime').disabled = true;
-			 document.getElementsByClassName('montime').disabled = true;
+			var inputs = document.getElementsByClassName('montime');
+			for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = true;
+			}
         } else {
-             //$('.montime').disabled = false;
-			 document.getElementsByClassName('montime').disabled = false;
+			 var inputs = document.getElementsByClassName('montime');
+			 for(var i = 0; i < inputs.length; i++) {
+				inputs[i].disabled = false;
+			}
         }
 	});
 	$('.tueallday').change(function(){
