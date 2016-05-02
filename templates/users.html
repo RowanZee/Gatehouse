@@ -129,6 +129,9 @@
 								<span>Admin User</span>
 							</div>
 						{% endif %}
+						{% for weekday in user.weekday %}
+							<label>{{ weekday.dayname }}</label
+						{% endfor %}
 						<input type="submit" class="button update-user" value="Update User">
 					</form>
 				</div>

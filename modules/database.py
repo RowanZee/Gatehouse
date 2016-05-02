@@ -1,5 +1,6 @@
 from database_model import db
 from database_model import UserModel
+from database_model import weekDay
 import os
 
 
@@ -29,13 +30,23 @@ class Database:
             return False
 
     # CREATE NEW USER
-    def createNewUser(self,usermod):
+    def createNewUser(self, username, password, admin, experationDate, day1):
         try:
-            db.session.add(usermod)
+            newUser = UserModel(username, password, admin, experationDate)
+            newUser.weekday = [day1]
+            db.session.add(newUser)
             db.session.commit()
             return True
         except:
             return False
+
+    # Create week day
+    def createDay(self, dayname, dayactive, allday, starttime, endtime):
+        try:
+            newDay = weekDay(dayname, dayactive, allday, starttime, endtime)
+            return newDay
+        except:
+            return null
 
     # EDIT USER
     def editUser(self, userID, username, password, admin, experationDate):

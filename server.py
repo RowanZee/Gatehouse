@@ -162,8 +162,24 @@ def users():
     else:
         experationDate = 'False'
 
-    # Creates user
-    database.createUser(username, password, isAdmin, experationDate)
+    #check Monday details
+    #Is it checked
+    if request.form.get('moncheck'):
+        monchecked = True
+    else:
+        monchecked = False
+
+    # Is all day checked
+    if request.form.get('monallday'):
+        monalldaychecked = True
+    else:
+        monalldaychecked = False
+
+    # create day
+    monday = createDay('Monday', monchecked, monalldaychecked, '0', '0')
+
+    # Creates user - add in check for false return
+    database.createUser(username, password, isAdmin, experationDate, monday)
 
     # Returns success message
     success = ("%s was created!")
