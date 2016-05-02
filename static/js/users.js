@@ -25,9 +25,11 @@ $(document).ready(function () {
 	
 	$('.monallday').change(function(){
 		if($(this).is(":checked")) {
-			 $('.montime').disabled = true;
+			 //$('.montime').disabled = true;
+			 document.getElementById('montime').disabled = true;
         } else {
-             $('.montime').disabled = false;
+             //$('.montime').disabled = false;
+			 document.getElementById('montime').disabled = false;
         }
 	});
 	$('.tueallday').change(function(){
