@@ -219,7 +219,7 @@ def users():
 
 
     # Creates user - add in check for false return
-    database.createNewUser(username, password, isAdmin, experationDate, monday, tuesday)
+    database.createNewUser(username, password, isAdmin, experationDate, monday, tuesday, wednesday, thursday, friday, saturday, sunday)
 
     # Returns success message
     success = ("%s was created!")
