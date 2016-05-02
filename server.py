@@ -206,8 +206,6 @@ def users():
     todaytime = 'suntimeto'
     sundayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
 
-
-
     # create days
     monday = database.createDay('Monday', mondayInfo.isactive, mondayInfo.isalldayactive, mondayInfo.fromtime, mondayInfo.totime)
     tuesday = database.createDay('Tuesday', tuesdayInfo.isactive, tuesdayInfo.isalldayactive, tuesdayInfo.fromtime, tuesdayInfo.totime)
@@ -216,7 +214,6 @@ def users():
     friday = database.createDay('Friday', fridayInfo.isactive, fridayInfo.isalldayactive, fridayInfo.fromtime, fridayInfo.totime)
     saturday = database.createDay('Saturday', saturdayInfo.isactive, saturdayInfo.isalldayactive, saturdayInfo.fromtime, saturdayInfo.totime)
     sunday = database.createDay('Sunday', sundayInfo.isactive, sundayInfo.isalldayactive, sundayInfo.fromtime, sundayInfo.totime)
-
 
     # Creates user - add in check for false return
     database.createNewUser(username, password, isAdmin, experationDate, monday, tuesday, wednesday, thursday, friday, saturday, sunday)
@@ -338,8 +335,11 @@ def toggledoor():
     if not user.loggedIn():
         return redirect(url_for('login'))
 
+    username = request.form['username']
+	return render_template('index.html', error="RIWAN")
+
     # Toggles Door
-    garage.toggleDoor()
+    #garage.toggleDoor()
 
     # Reloads index
     return redirect(url_for('index'))
