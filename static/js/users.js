@@ -32,6 +32,60 @@ $(document).ready(function () {
     		$('.montime').removeClass("hidden");
         }
 	});
+	$('.tueallday').change(function(){
+		if($(this).is(":checked")) {
+            $('.tuetime').removeClass("visible");
+    		$('.tuetime').addClass("hidden");
+        } else {
+            $('.tuetime').addClass("visible");
+    		$('.tuetime').removeClass("hidden");
+        }
+	});
+	$('.wedallday').change(function(){
+		if($(this).is(":checked")) {
+            $('.wedtime').removeClass("visible");
+    		$('.wedtime').addClass("hidden");
+        } else {
+            $('.wedtime').addClass("visible");
+    		$('.wedtime').removeClass("hidden");
+        }
+	});
+	$('.thuallday').change(function(){
+		if($(this).is(":checked")) {
+            $('.thutime').removeClass("visible");
+    		$('.thutime').addClass("hidden");
+        } else {
+            $('.thutime').addClass("visible");
+    		$('.thutime').removeClass("hidden");
+        }
+	});
+	$('.friallday').change(function(){
+		if($(this).is(":checked")) {
+            $('.fritime').removeClass("visible");
+    		$('.fritime').addClass("hidden");
+        } else {
+            $('.fritime').addClass("visible");
+    		$('.fritime').removeClass("hidden");
+        }
+	});
+	$('.satallday').change(function(){
+		if($(this).is(":checked")) {
+            $('.sattime').removeClass("visible");
+    		$('.sattime').addClass("hidden");
+        } else {
+            $('.sattime').addClass("visible");
+    		$('.sattime').removeClass("hidden");
+        }
+	});
+	$('.sunallday').change(function(){
+		if($(this).is(":checked")) {
+            $('.suntime').removeClass("visible");
+    		$('.suntime').addClass("hidden");
+        } else {
+            $('.suntime').addClass("visible");
+    		$('.suntime').removeClass("hidden");
+        }
+	});
 
     //Accordian
     $(function() { $( "#accordion" ).accordion({
