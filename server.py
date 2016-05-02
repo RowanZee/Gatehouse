@@ -164,7 +164,8 @@ def users():
 
     #check Monday details
     #Is it checked
-    if request.form.get('moncheck'):
+    daycheckname = 'moncheck'
+    if request.form.get(daycheckname):
         monchecked = True
     else:
         monchecked = False
@@ -175,8 +176,13 @@ def users():
     else:
         monalldaychecked = False
 
-    # create day
-    monday = database.createDay('Monday', monchecked, monalldaychecked, '0', '0')
+    # Retrieve times
+    monstartime = request.get('montimefrom')
+    monendtime = request.get('montimeto')
+
+    # create days
+    monday = database.createDay('Monday', monchecked, monalldaychecked, monstartime, monendtime)
+
 
     # Creates user - add in check for false return
     database.createNewUser(username, password, isAdmin, experationDate, monday)
