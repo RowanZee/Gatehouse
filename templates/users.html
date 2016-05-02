@@ -20,12 +20,32 @@
 				</div>
 				<input class="date-time hidden" type="date" value="2016-04-25" id="tempDate" name="dateTmp">
 				<div class="date-time hidden">
-				<input type="checkbox" name="moncheck">
-				<span>Monday</span><br />
-				<input type="checkbox" name="monallday" class="monallday visible" checked="checked">
-				<span class="monallday visible">All Day</span>
-				<input type="time" name="montimefrom" class="montime hidden"> -
-				<input type="time" name="montimeto" class="montime hidden">
+				
+				<div id="accordion">
+					<h3 class="accordian_{{ user.id }}">
+						<span>ACCTEST</span>
+						<div>
+							<i data-id" class="fa fa-trash-o"></i>
+						</div>
+					</h3>
+					<div class="accordian_{{ user.id }}">
+						<form class="edit-user" action="{{ url_for('edituser') }}?userID={{ user.id }}" method="post">
+							<input type="text" class="username" placeholder="{{ user.username }}" name="username">
+							<input type="password" class="password" placeholder="New Password" name="password">
+							<input type="submit" class="button update-user" value="Update User">
+						</form>
+					</div>
+				</div>
+				
+				
+				<div>
+					<input type="checkbox" name="moncheck">
+					<span>Monday</span><br />
+					<input type="checkbox" name="monallday" class="monallday visible" checked="checked">
+					<span class="monallday visible">All Day</span>
+					<input type="time" name="montimefrom" class="montime hidden"> -
+					<input type="time" name="montimeto" class="montime hidden">
+				</div>
 				<input type="checkbox" name="tuecheck">
 				<span>Tuesday</span>
 				<input type="time" name="tuetimefrom"> -
