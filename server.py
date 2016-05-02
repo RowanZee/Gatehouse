@@ -177,8 +177,8 @@ def users():
         monalldaychecked = False
 
     # Retrieve times
-    monstartime = request.get('montimefrom')
-    monendtime = request.get('montimeto')
+    monstartime = request.form.get('montimefrom')
+    monendtime = request.form.get('montimeto')
 
     # create days
     monday = database.createDay('Monday', monchecked, monalldaychecked, monstartime, monendtime)
