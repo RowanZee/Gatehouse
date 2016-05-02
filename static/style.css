@@ -84,10 +84,10 @@ form input.button {
   width: 100%;
 }
 
-input[type="time"] {
+.timeinput {
     width: 120px;
     margin-left: 35px;
-	color:red;
+    background-color:red;
 }
 
 .ui-accordion-header.ui-state-default.ui-accordion-icons {
