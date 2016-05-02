@@ -176,7 +176,7 @@ def users():
         monalldaychecked = False
 
     # create day
-    monday = createDay('Monday', monchecked, monalldaychecked, '0', '0')
+    monday = database.createDay('Monday', monchecked, monalldaychecked, '0', '0')
 
     # Creates user - add in check for false return
     database.createUser(username, password, isAdmin, experationDate, monday)
