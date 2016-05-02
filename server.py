@@ -179,7 +179,7 @@ def users():
     monday = database.createDay('Monday', monchecked, monalldaychecked, '0', '0')
 
     # Creates user - add in check for false return
-    database.createUser(username, password, isAdmin, experationDate, monday)
+    database.createNewUser(username, password, isAdmin, experationDate, monday)
 
     # Returns success message
     success = ("%s was created!")
