@@ -84,7 +84,7 @@ form input.button {
   width: 100%;
 }
 
-form input[type="time"] {
+input[type="time"] {
     width: 120px;
     margin-left: 35px;
 	color:red;
