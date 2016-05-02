@@ -66,6 +66,7 @@ def login():
 
             # Logs user in
             user.login()
+            user.setName(username)
             # Checks if user is admin
             if databaseUser.admin is True:
                 # Sets admin status
@@ -78,6 +79,7 @@ def login():
        request.form['password'] == app.config['PASSWORD']):
             # Logs user in
             user.login()
+            user.setName(request.form['username'])
             # Sets admin status
             user.setAdmin()
             # Returns Index
@@ -335,8 +337,8 @@ def toggledoor():
     if not user.loggedIn():
         return redirect(url_for('login'))
 
-    username = request.form['username']
-    return redirect(url_for('index', error="ROWAN"))
+    username = user.getName()
+    return redirect(url_for('index', error=username))
 
     # Toggles Door
     #garage.toggleDoor()

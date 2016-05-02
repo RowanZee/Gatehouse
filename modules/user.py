@@ -44,6 +44,14 @@ class User:
     def setAdmin(self):
         session['is_admin'] = True
 
+    # SET USER NAME
+    def setName(self, name):
+        session['name'] = name
+
+    # GET USER NAME
+    def getName(self):
+        return session.get('name')
+
     # FORMAT DATE
     def formatDate(self, date):
         all = string.maketrans('', '')
