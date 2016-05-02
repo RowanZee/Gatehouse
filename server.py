@@ -180,7 +180,7 @@ def users():
     alldayactive = 'wedallday'
     fromdaytime = 'wedtimefrom'
     todaytime = 'wedtimeto'
-    wednesdayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime
+    wednesdayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
     #Thursday details
     daycheckname = 'thucheck'
     alldayactive = 'thuallday'
