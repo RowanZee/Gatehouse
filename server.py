@@ -164,31 +164,27 @@ def users():
         experationDate = 'False'
 
     #check Monday details
-    #Is it checked
     daycheckname = 'moncheck'
     alldayactive = 'monallday'
     fromdaytime = 'montimefrom'
     todaytime = 'montimeto'
 
     mondayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
+    #Tuesday details
+    daycheckname = 'tuecheck'
+    alldayactive = 'tueallday'
+    fromdaytime = 'tuetimefrom'
+    todaytime = 'tuetimeto'
 
-
-    monchecked = mondayInfo.isactive
-    monalldaychecked = mondayInfo.isalldayactive
-    monstartime = mondayInfo.fromtime
-    monendtime = mondayInfo.totime
-
-
-    # Retrieve times
-    #monstartime = request.form.get('montimefrom')
-    #monendtime = request.form.get('montimeto')
+    tuesdayInfo = getweekday(daycheckname, alldayactive, fromdaytime, todaytime)
 
     # create days
-    monday = database.createDay('Monday', monchecked, monalldaychecked, monstartime, monendtime)
+    monday = database.createDay('Monday', mondayInfo.isactive, mondayInfo.isalldayactive, mondayInfo.fromtime, mondayInfo.totime)
+    tuesday = database.createDay('Tuesday', tuesdayInfo.isactive, tuesdayInfo.isalldayactive, tuesdayInfo.fromtime, tuesdayInfo.totime)
 
 
     # Creates user - add in check for false return
-    database.createNewUser(username, password, isAdmin, experationDate, monday)
+    database.createNewUser(username, password, isAdmin, experationDate, monday, tuesday)
 
     # Returns success message
     success = ("%s was created!")
