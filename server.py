@@ -166,19 +166,19 @@ def users():
     #check Monday details
     #Is it checked
     daycheckname = 'moncheck'
+    alldayactive = 'monallday'
 
-    # if request.form.get(daycheckname):
-        # monchecked = True
-    # else:
-        # monchecked = False
-    mondayInfo = getweekday(daycheckname)
+    mondayInfo = getweekday(daycheckname, alldayactive)
+
+
     monchecked = mondayInfo.isactive
+    monalldaychecked = mondayInfo.isalldayactive
 
-    # Is all day checked
-    if request.form.get('monallday'):
-        monalldaychecked = True
-    else:
-        monalldaychecked = False
+    # # Is all day checked
+    # if request.form.get('monallday'):
+        # monalldaychecked = True
+    # else:
+        # monalldaychecked = False
 
     # Retrieve times
     monstartime = request.form.get('montimefrom')
@@ -197,13 +197,19 @@ def users():
     return render_template('users.html', users=database.userList(),
                            success=success)
 
-def getweekday(dayname):
-    dayinfo = namedtuple("info", ["isactive"])
-    if request.form.get(dayname):
+def getweekday(dayActive, alldayActive):
+    dayinfo = namedtuple("info", ["isactive", "isalldayactive"])
+    # Check if the day is active
+    if request.form.get(dayActive):
         dayactive = True
     else:
         dayactive = False
-    return dayinfo(dayactive)
+    # Check if all day is active
+    if request.form.get('monallday'):
+        alldayActive = True
+    else:
+        alldayActive = False
+    return dayinfo(dayactive, alldayActive)
 
 @app.route('/edituser/', methods=['POST'])
 # GET - None

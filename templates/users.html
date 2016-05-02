@@ -116,6 +116,7 @@
 						{% for weekday in user.weekday %}
 							<label>{{ weekday.dayname }}</label>
 							<label>{{ weekday.checked }}</label>
+							<label>{{ weekday.allday }}</label>
 						{% endfor %}
 						
 						<input type="submit" class="button update-user" value="Update User">
