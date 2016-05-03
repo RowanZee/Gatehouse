@@ -89,3 +89,8 @@ class Database:
     def userList(self):
         users = UserModel.query.all()
         return users
+ 
+    # LIST DAYS FOR USER
+    def getUserDays(self):
+        days = weekDay.query.filter(UserModel.username.any(name='tester')).all()
+		return days

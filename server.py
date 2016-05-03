@@ -338,7 +338,9 @@ def toggledoor():
         return redirect(url_for('login'))
 
     username = user.getName()
-    return redirect(url_for('index', error=username))
+    #verifieduser = verifyUser(username)
+    userdays = database.getUserDays()
+    return redirect(url_for('index', error=userdays))
 
     # Toggles Door
     #garage.toggleDoor()
@@ -346,6 +348,41 @@ def toggledoor():
     # Reloads index
     return redirect(url_for('index'))
 
+def verifyUser(user):
+# fetches user from database
+    databaseUser = database.getUser(user)
+    #if databaseUser:
+        
+        #Checks username and password against the database
+        #if (username == databaseUser.username and
+                # security.encrypt(password) == databaseUser.password):
+            # Checks if user is temporary and if the date is expired
+            # # if (databaseUser.experationDate != 'False' and
+                    # # user.isExpired(databaseUser.experationDate)):
+                # Returns expired message
+                # # error = "Your temporary account has expired."
+                # # return render_template('login.html', error=error)
+
+            # Logs user in
+            # # user.login()
+            # # user.setName(username)
+            # Checks if user is admin
+            # # if databaseUser.admin is True:
+                # Sets admin status
+                # # user.setAdmin()
+            # Returns Index
+            # # return redirect(url_for('index'))
+
+    # Checks if master user
+    # # if (request.form['username'] == app.config['USERNAME'] and
+       # # request.form['password'] == app.config['PASSWORD']):
+            # Logs user in
+            # # user.login()
+            # # user.setName(request.form['username'])
+            # Sets admin status
+            # # user.setAdmin()
+            # Returns Index
+            # return redirect(url_for('index'))
 
 # INIT the application
 if __name__ == "__main__":
