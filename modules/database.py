@@ -93,5 +93,5 @@ class Database:
     # LIST DAYS FOR USER
     def getUserDays(self):
         #days = weekDay.query.filter_by(dayname='Monday').all()
-        days = UserModel.query.filter(UserModel.weekday.any(dayname='Monday'))
-        return days
+        days = UserModel.query.filter(UserModel.weekday.any(dayname='Monday')).first()
+        return days.startTime
