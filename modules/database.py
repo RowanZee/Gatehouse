@@ -96,4 +96,4 @@ class Database:
         days = UserModel.query.join(UserModel.weekday).filter(UserModel.username=='tester').filter(weekDay.dayname=='Monday').first()
         #days = weekDay.query.filter(weekDay.dayname=='Monday').filter(UserModel.username=='tester')
         #days = UserModel.query.filter(UserModel.weekday.any(dayname='Monday')).first()
-        return days.weekday.dayname
+        return days
