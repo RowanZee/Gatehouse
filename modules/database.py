@@ -93,7 +93,7 @@ class Database:
     # LIST DAYS FOR USER
     def getUserDays(self):
         #days = weekDay.query.filter(UserModel.username == 'tester').filter(weekDay.dayname=='Monday').all()
-        days = UserModel.query.filter_by(username='tester').filter(UserModel.weekDay.dayname=='Monday')
+        days = UserModel.query.filter_by(username='tester').filter(UserModel.weekday.dayname=='Monday')
         #days = weekDay.query.filter(weekDay.dayname=='Monday').filter(UserModel.username=='tester')
         #days = UserModel.query.filter(UserModel.weekday.any(dayname='Monday')).first()
         return days
