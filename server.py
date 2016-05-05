@@ -10,6 +10,7 @@ from modules.database import Database
 from modules.garage import Garage
 from modules.settings import Settings
 from collections import namedtuple
+from datetime import date
 
 
 # GLOBAL VARIABES
@@ -338,6 +339,7 @@ def toggledoor():
         return redirect(url_for('login'))
 
     username = user.getName()
+    isUserAuthorised = authoriseUser(username)
     #verifieduser = verifyUser(username)
     userdays = database.getUserDays()
     return redirect(url_for('index', error=userdays))
@@ -348,9 +350,11 @@ def toggledoor():
     # Reloads index
     return redirect(url_for('index'))
 
-def verifyUser(user):
+def authoriseUser(user):
 # fetches user from database
     databaseUser = database.getUser(user)
+    my_date = date.today().weekday()
+    print "todays: ", my_date
     #if databaseUser:
         
         #Checks username and password against the database
