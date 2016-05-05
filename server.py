@@ -235,13 +235,13 @@ def getweekday(dayActive, alldayActive, timefrom, timeto):
     else:
         dayactive = False
     # Check if all day is active
-    if request.form.get('monallday'):
-        alldayActive = True
+    if request.form.get(alldayActive):
+        activeallday = True
     else:
-        alldayActive = False
+        activeallday = False
     fromTime = request.form.get(timefrom)
     toTime = request.form.get(timeto)
-    return dayinfo(dayactive, alldayActive, fromTime, toTime)
+    return dayinfo(dayactive, activeallday, fromTime, toTime)
 
 @app.route('/edituser/', methods=['POST'])
 # GET - None
@@ -346,7 +346,7 @@ def toggledoor():
     #verifieduser = verifyUser(username)
     if isUserAuthorised:
         #toggle gate
-        return redirect(url_for('index'))
+        return redirect(url_for('index', error"auth"))
     else:
         return redirect(url_for('index', error="HELLO"))
 
