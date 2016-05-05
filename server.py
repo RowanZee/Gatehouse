@@ -382,6 +382,7 @@ def authoriseUser(user):
     elif today_weekday == 6:
         weekday = getUserDay(user, "Sunday") 
     else:
+        return False
         #something went wrong
 
     if weekday.allday:
