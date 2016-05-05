@@ -341,8 +341,11 @@ def toggledoor():
     username = user.getName()
     isUserAuthorised = authoriseUser(username)
     #verifieduser = verifyUser(username)
-    userdays = database.getUserDays()
-    return redirect(url_for('index', error=userdays))
+    if isUserAuthorised
+        #toggle gate
+        return redirect(url_for('index'))
+    else
+        return redirect(url_for('index', error="HELLO"))
 
     # Toggles Door
     #garage.toggleDoor()
@@ -352,9 +355,36 @@ def toggledoor():
 
 def authoriseUser(user):
 # fetches user from database
-    databaseUser = database.getUser(user)
-    my_date = date.today().weekday()
-    print "todays: ", my_date
+    #databaseUser = database.getUser(user)
+
+    today_weekday = date.today().weekday()
+
+    #Check for day of week
+    #Monday
+    if today_weekday == 0
+    #Tuesday
+    elif today_weekday == 1
+    #Wednesday
+    elif today_weekday == 2
+    #Thursday
+    elif today_weekday == 3
+        weekday = getUserDay(user, "Thursday") 
+    #Friday
+    elif today_weekday == 4
+    #Saturday
+    elif today_weekday == 5
+    #Sunday
+    elif today_weekday == 6
+    else 
+        #something went wrong
+
+    if weekday.allday
+        authorised = True
+    else
+        authorised = False
+
+    return authorised
+
     #if databaseUser:
         
         #Checks username and password against the database

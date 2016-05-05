@@ -91,9 +91,9 @@ class Database:
         return users
  
     # LIST DAYS FOR USER
-    def getUserDays(self):
+    def getUserDay(self, userName, dayOfWeek):
         #days = weekDay.query.filter(UserModel.username == 'tester').filter(weekDay.dayname=='Monday').all()
         #days = UserModel.query.join(UserModel.weekday).filter(UserModel.username=='tester').filter(weekDay.dayname=='Monday').first()
-        days = weekDay.query.filter(weekDay.dayname=='Monday').filter(UserModel.username=='tester').first()
+        week_day = weekDay.query.filter(weekDay.dayname==dayOfWeek).filter(UserModel.username==userName).first()
         #days = UserModel.query.filter(UserModel.weekday.any(dayname='Monday')).first()
-        return days.startTime
+        return week_day
