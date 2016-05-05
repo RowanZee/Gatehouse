@@ -387,7 +387,7 @@ def authoriseUser(user):
 
     if weekday.allday:
         authorised = True
-    else
+    else:
         authorised = False
 
     return authorised
