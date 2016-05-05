@@ -239,7 +239,6 @@ def getweekday(dayActive, alldayActive, timefrom, timeto):
     else:
         alldayActive = False
     fromTime = request.form.get(timefrom)
-    print  "TIME - ", fromTime
     toTime = request.form.get(timeto)
     return dayinfo(dayactive, alldayActive, fromTime, toTime)
 
