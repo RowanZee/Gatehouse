@@ -338,6 +338,9 @@ def toggledoor():
     if not user.loggedIn():
         return redirect(url_for('login'))
 
+    if user.isAdmin():
+        return redirect(url_for('index', error="ADMIN"))
+
     username = user.getName()
     isUserAuthorised = authoriseUser(username)
     #verifieduser = verifyUser(username)
@@ -371,7 +374,6 @@ def authoriseUser(user):
         weekday = database.getUserDay(user, "Wednesday") 
     #Thursday
     elif today_weekday == 3:
-        print "name", user
         weekday = database.getUserDay(user, "Thursday") 
     #Friday
     elif today_weekday == 4:
