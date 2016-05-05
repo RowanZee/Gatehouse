@@ -341,7 +341,7 @@ def toggledoor():
     username = user.getName()
     isUserAuthorised = authoriseUser(username)
     #verifieduser = verifyUser(username)
-    if isUserAuthorised
+    if isUserAuthorised == True
         #toggle gate
         return redirect(url_for('index'))
     else
@@ -378,7 +378,7 @@ def authoriseUser(user):
     else 
         #something went wrong
 
-    if weekday.allday
+    if weekday.allday == True
         authorised = True
     else
         authorised = False
