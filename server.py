@@ -346,7 +346,7 @@ def toggledoor():
     #verifieduser = verifyUser(username)
     if isUserAuthorised:
         #toggle gate
-        return redirect(url_for('index', error"auth"))
+        return redirect(url_for('index', error="auth"))
     else:
         return redirect(url_for('index', error="HELLO"))
 
