@@ -371,6 +371,7 @@ def authoriseUser(user):
         weekday = database.getUserDay(user, "Wednesday") 
     #Thursday
     elif today_weekday == 3:
+        print "name", user
         weekday = database.getUserDay(user, "Thursday") 
     #Friday
     elif today_weekday == 4:
