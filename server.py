@@ -344,7 +344,7 @@ def toggledoor():
     if isUserAuthorised:
         #toggle gate
         return redirect(url_for('index'))
-    else
+    else:
         return redirect(url_for('index', error="HELLO"))
 
     # Toggles Door
@@ -375,7 +375,7 @@ def authoriseUser(user):
     elif today_weekday == 5:
     #Sunday
     elif today_weekday == 6:
-    else 
+    else:
         #something went wrong
 
     if weekday.allday:
