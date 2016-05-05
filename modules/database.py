@@ -1,6 +1,7 @@
 from database_model import db
 from database_model import UserModel
 from database_model import weekDay
+from collections import namedtuple
 import os
 
 
