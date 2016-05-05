@@ -362,19 +362,25 @@ def authoriseUser(user):
     #Check for day of week
     #Monday
     if today_weekday == 0:
+        weekday = getUserDay(user, "Monday") 
     #Tuesday
     elif today_weekday == 1:
+        weekday = getUserDay(user, "Tuesday") 
     #Wednesday
     elif today_weekday == 2:
+        weekday = getUserDay(user, "Wednesday") 
     #Thursday
     elif today_weekday == 3:
         weekday = getUserDay(user, "Thursday") 
     #Friday
     elif today_weekday == 4:
+        weekday = getUserDay(user, "Friday") 
     #Saturday
     elif today_weekday == 5:
+        weekday = getUserDay(user, "Saturday") 
     #Sunday
     elif today_weekday == 6:
+        weekday = getUserDay(user, "Sunday") 
     else:
         #something went wrong
 
