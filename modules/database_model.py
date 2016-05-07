@@ -14,7 +14,7 @@ class UserModel(db.Model):
     password = db.Column(db.String(120), unique=True)
     admin = db.Column(db.Boolean())
     experationDate = db.Column(db.String(80))
-    weekday = db.relationship('weekDay', cascade='all,delete-orphan', single_parent=True, backref=db.backref('usermodel'))
+    weekday = db.relationship('weekDay', cascade='all,delete-orphan', single_parent=True, backref=db.backref('usermodel', lazy='joined'))
 
     def __init__(self, username, password, admin, experationDate):
         self.username = username
