@@ -22,6 +22,10 @@ $(document).ready(function () {
     		$('.date-time').removeClass("visible");
         }
     });
+	function validate() {
+
+		return false;
+	}
 	
 	$('.monallday').change(function(){
 		if($(this).is(":checked")) {

@@ -7,7 +7,7 @@
 	<!-- Add Users -->
 	<div class="create-user">
 		<div class="narrow-site-width">
-			<form action="{{ url_for('users') }}" method="post" >
+			<form action="{{ url_for('users') }}" method="post" onsubmit="return validate()">
 				<input type="text" class="username" {% if username %} value="{{username}}" {% endif %} placeholder="Username" name="username">
 				<input type="password" class="password" placeholder="Password" name="password">
 				<div>
