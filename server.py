@@ -391,9 +391,9 @@ def authoriseUser(user):
     if weekday.isactive:
         if not weekday.isalldayactive:
             #if the weekday isnt allday active check for times
-                print weekday.fromtime
-                dt_obj = datetime.strptime(weekday.fromtime, "%H:%M")
-                print dt_obj
+            print weekday.fromtime
+            dt_obj = datetime.strptime(weekday.fromtime, "%H:%M")
+            print dt_obj
             authorised = False
         else:
             authorised = True
