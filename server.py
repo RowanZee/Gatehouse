@@ -343,6 +343,7 @@ def toggledoor():
 
     username = user.getName()
     isUserAuthorised = authoriseUser(username)
+	print ('tdoay is: ' + str(username))
     #verifieduser = verifyUser(username)
     if isUserAuthorised:
         #toggle gate
@@ -387,7 +388,7 @@ def authoriseUser(user):
     else:
         return False
         #something went wrong
-    print ('tdoay is: ' + str(today_weekday))
+    
     if weekday.isactive:
         if not weekday.isalldayactive:
             #if the weekday isnt allday active check for times
