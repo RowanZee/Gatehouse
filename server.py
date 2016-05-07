@@ -346,7 +346,7 @@ def toggledoor():
     #verifieduser = verifyUser(username)
     if isUserAuthorised:
         #toggle gate
-        return redirect(url_for('index', error="auth"))
+        return redirect(url_for('index', error="authorisedtoopen"))
     else:
         return redirect(url_for('index', error="HELLO"))
 
@@ -390,7 +390,10 @@ def authoriseUser(user):
 
     if weekday.isactive:
         if not weekday.isalldayactive:
-            #if the weekday isnt allday active check for times\
+            #if the weekday isnt allday active check for times
+                print weekday.fromtime
+                dt_obj = datetime.strptime(weekday.fromtime, "%H:%M")
+                print dt_obj
             authorised = False
         else:
             authorised = True
