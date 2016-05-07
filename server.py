@@ -343,7 +343,7 @@ def toggledoor():
 
     username = user.getName()
     isUserAuthorised = authoriseUser(username)
-    print ('tdoay is: ' + str(username))
+
     #verifieduser = verifyUser(username)
     if isUserAuthorised:
         #toggle gate
@@ -362,7 +362,7 @@ def authoriseUser(user):
     #databaseUser = database.getUser(user)
 
     today_weekday = date.today().weekday()
-
+    print ('tdoay is: ' + str(today_weekday))
     #Check for day of week   ["isactive", "isalldayactive", "fromtime", "totime"])
     #Monday
     if today_weekday == 0:
