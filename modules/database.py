@@ -97,6 +97,6 @@ class Database:
         #days = weekDay.query.filter(UserModel.username == 'tester').filter(weekDay.dayname=='Monday').all()
         #days = UserModel.query.join(UserModel.weekday).filter(UserModel.username=='tester').filter(weekDay.dayname=='Monday').first()
         week_day = weekDay.query.filter(weekDay.dayname==dayOfWeek).filter(UserModel.username==userName).first()
-        print ('active: ' + str(weekday.allday)+weekday.dayname)
+        print ('active: ' + str(week_day.allday)+week_day.dayname)
         #days = UserModel.query.filter(UserModel.weekday.any(dayname='Monday')).first()
         return weekdayinfo(week_day.checked, week_day.allday, week_day.startTime, week_day.endTime)
