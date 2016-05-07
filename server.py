@@ -343,7 +343,7 @@ def toggledoor():
 
     username = user.getName()
     isUserAuthorised = authoriseUser(username)
-	print ('tdoay is: ' + str(username))
+    print ('tdoay is: ' + str(username))
     #verifieduser = verifyUser(username)
     if isUserAuthorised:
         #toggle gate
