@@ -390,8 +390,8 @@ def authoriseUser(user):
 
     if weekday.isactive:
         if not weekday.isalldayactive:
-            #if the weekday isnt allday active check for times
-            
+            #if the weekday isnt allday active check for times\
+            authorised = False
         else:
             authorised = True
     else:
