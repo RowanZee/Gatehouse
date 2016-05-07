@@ -387,7 +387,7 @@ def authoriseUser(user):
     else:
         return False
         #something went wrong
-
+    print "tdoay is: ", today_weekday
     if weekday.isactive:
         if not weekday.isalldayactive:
             #if the weekday isnt allday active check for times
