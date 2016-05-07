@@ -1,3 +1,7 @@
+    function validate(form) {
+
+        return false;
+    }
 $(document).ready(function () {
 
     //Temp User
@@ -22,10 +26,6 @@ $(document).ready(function () {
     		$('.date-time').removeClass("visible");
         }
     });
-	function validate() {
-
-		return false;
-	}
 	
 	$('.monallday').change(function(){
 		if($(this).is(":checked")) {
