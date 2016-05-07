@@ -93,7 +93,7 @@ class Database:
  
     # LIST DAYS FOR USER
     def getUserDay(self, userName, dayOfWeek):
-        weekdayinfo = namedtuple("weekinfo", ["isactive", "isalldayactive", "fromtime", "totime"])
+        weekdayinfo = namedtuple("weekdayinfo", ["isactive", "isalldayactive", "fromtime", "totime"])
         #days = weekDay.query.filter(UserModel.username == 'tester').filter(weekDay.dayname=='Monday').all()
         #days = UserModel.query.join(UserModel.weekday).filter(UserModel.username=='tester').filter(weekDay.dayname=='Monday').first()
         week_day = weekDay.query.filter(weekDay.dayname==dayOfWeek).filter(UserModel.username==userName).first()
