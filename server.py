@@ -362,7 +362,7 @@ def authoriseUser(user):
     #databaseUser = database.getUser(user)
 
     today_weekday = date.today().weekday()
-    print ('tdoay is: ' + str(today_weekday))
+
     #Check for day of week   ["isactive", "isalldayactive", "fromtime", "totime"])
     #Monday
     if today_weekday == 0:
@@ -390,6 +390,7 @@ def authoriseUser(user):
         #something went wrong
     
     if weekday.isactive:
+        print ('active: ' + str(weekday.isalldayactive))
         if not weekday.isalldayactive:
             #if the weekday isnt allday active check for times
             print weekday.fromtime
