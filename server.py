@@ -390,12 +390,12 @@ def authoriseUser(user):
         #something went wrong
     
     if weekday.isactive:
-        print ('active: ' + str(weekday.isalldayactive))
         if not weekday.isalldayactive:
             #if the weekday isnt allday active check for times
-            print weekday.fromtime
-            dt_obj = datetime.strptime(weekday.fromtime, "%H:%M")
-            print dt_obj
+            mintime = datetime.strptime(weekday.fromtime, "%H:%M")
+            maxtime = datetime.strptime(weekday.totime, "%H:%M")
+            timenow = datetime.date.today()
+            print mintime.hour +" Time now: " + timenow
             authorised = False
         else:
             authorised = True
