@@ -394,9 +394,18 @@ def authoriseUser(user):
             #if the weekday isnt allday active check for times
             mintime = datetime.strptime(weekday.fromtime, "%H:%M")
             maxtime = datetime.strptime(weekday.totime, "%H:%M")
-            timenow = datetime.date.today()
-            print mintime.hour +" Time now: " + timenow
-            authorised = False
+            timenow = datetime.today()
+            if timenow.hour == mintime.hour:
+                if timenow.minute > mintime.minute:
+                    authorised = True
+            elif timenow.hour == maxtime.hour:
+                if timenow.minute < maxtime.minute:
+                    authorised = True
+            elif mintime.hour < timenow.hour and maxtime.hour > timenow.hour:
+                #Hour is in range need to check for minutes 
+                authorised = True
+            else:
+                authorised = False
         else:
             authorised = True
     else:
