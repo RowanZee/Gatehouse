@@ -10,7 +10,7 @@ from modules.database import Database
 from modules.garage import Garage
 from modules.settings import Settings
 from collections import namedtuple
-from datetime import date
+from datetime import datetime
 
 
 # GLOBAL VARIABES
