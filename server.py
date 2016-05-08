@@ -361,7 +361,7 @@ def authoriseUser(user):
 # fetches user from database
     #databaseUser = database.getUser(user)
 
-    today_weekday = date.today().weekday()
+    today_weekday = datetime.today().weekday()
 
     #Check for day of week   ["isactive", "isalldayactive", "fromtime", "totime"])
     #Monday
