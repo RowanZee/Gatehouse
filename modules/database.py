@@ -98,7 +98,7 @@ class Database:
         #days = UserModel.query.join(UserModel.weekday).filter(UserModel.username=='tester').filter(weekDay.dayname=='Monday').first()
         #week_day = weekDay.query.filter(weekDay.dayname==dayOfWeek).filter(UserModel.username==userName).first()
         #week_day = weekDay.query.filter(weekDay.dayname==dayOfWeek).from_self().join(weekDay)filter(weekDay.usermodel.username==userName).first()
-        week_day = UserModel.query.filter(UserModel.username=='userName').from_self(weekDay.checked).join(UserModel.weekDay).filter(weekDay.dayname == dayOfWeek)
+        week_day = UserModel.query.filter(UserModel.username=='userName').from_self(weekDay.checked).join(UserModel.weekday).filter(weekDay.dayname == dayOfWeek)
         print ('active: ' + week_day.checked)
         #days = UserModel.query.filter(UserModel.weekday.any(dayname='Monday')).first()
         #return weekdayinfo(week_day.checked, week_day.allday, week_day.startTime, week_day.endTime)
