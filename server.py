@@ -398,9 +398,11 @@ def authoriseUser(user):
             if timenow.hour == mintime.hour:
                 if timenow.minute > mintime.minute:
                     authorised = True
+                else authorised = False
             elif timenow.hour == maxtime.hour:
                 if timenow.minute < maxtime.minute:
                     authorised = True
+                else authorised = False
             elif mintime.hour < timenow.hour and maxtime.hour > timenow.hour:
                 #Hour is in range need to check for minutes 
                 authorised = True
