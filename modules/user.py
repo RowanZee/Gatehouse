@@ -17,8 +17,6 @@ class User:
         now = datetime.now()
         experationDate = self.formatDate(str(date))
         currentDate = str(now.strftime('%Y%m%d'))
-        print ('current date ' + str(currentDate))
-        print ('experation date ' + str(experationDate))
         if int(experationDate) <= int(currentDate):
             return True
         else:

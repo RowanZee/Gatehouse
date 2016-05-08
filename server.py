@@ -339,17 +339,19 @@ def toggledoor():
         return redirect(url_for('login'))
 
     if user.isAdmin():
-        return redirect(url_for('index', error="ADMIN"))
+        #toggle gate
+        garage.toggleDoor()
+        return redirect(url_for('index'))
 
     username = user.getName()
     isUserAuthorised = authoriseUser(username)
 
-    #verifieduser = verifyUser(username)
     if isUserAuthorised:
         #toggle gate
-        return redirect(url_for('index', error="authorisedtoopen"))
+        garage.toggleDoor()
+        return redirect(url_for('index'))
     else:
-        return redirect(url_for('index', error="HELLO"))
+        return redirect(url_for('index', error="UnauthorisedAtThisTime"))
 
     # Toggles Door
     #garage.toggleDoor()
