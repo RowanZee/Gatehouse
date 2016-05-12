@@ -1,6 +1,6 @@
 from modules.database_model import db
 from modules.database_model import UserModel
-from mnodules.database_model import weekDay
+from modules.database_model import weekDay
 from collections import namedtuple
 import os
 
