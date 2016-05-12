@@ -1,7 +1,7 @@
 try:
     import RPi.GPIO as GPIO
 except:
-    print 'Notice: Not Connect To A Pi.'
+    print("Notice: Not Connect To A Pi.")
 import time
 
 
@@ -13,7 +13,7 @@ class Garage:
             GPIO.setmode(GPIO.BCM)
             self.cleanupRelay()
         except:
-            print 'Warning: Could Not Init Garage.'
+            print("Warning: Could Not Init Garage.")
 
     # TOGGLE FUNCTION
     def toggleDoor(self):
@@ -26,7 +26,7 @@ class Garage:
             GPIO.setmode(GPIO.BCM)
             self.cleanupRelay()
         except:
-            print 'Warning: Failed To Toggle Door.'
+            print("Warning: Failed To Toggle Door.")
 
     # Cleanup PI
     def cleanupRelay(self):
@@ -35,4 +35,4 @@ class Garage:
                 GPIO.setup(pin, GPIO.OUT)
                 GPIO.output(pin, GPIO.LOW)
         except:
-            print 'Warning: Failed To Clean Up.'
+            print("Warning: Failed To Clean Up.")
