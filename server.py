@@ -18,6 +18,10 @@ DEBUG = True  # This needs to be commented out in master for security.
 
 # Master login
 settings = Settings()
+security = Security()
+user = User()
+database = Database()
+garage = Garage()
 USERNAME = settings.username()
 PASSWORD = settings.password()
 
