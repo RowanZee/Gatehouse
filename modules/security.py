@@ -9,7 +9,7 @@ class Security:
     # ENCRPYT
     def encrypt(self, value):
         h = SHA256.new()
-        h.update(value)
+        h.update(value.encode('utf-8'))
         return str(h.hexdigest())
 
     def passwordStrength(self, password):
