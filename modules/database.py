@@ -39,6 +39,7 @@ class Database:
             db.session.commit()
             return True
         except:
+            print("Error creating new user")
             db.session.rollback()
             return False
 
