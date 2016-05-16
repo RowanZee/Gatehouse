@@ -52,7 +52,4 @@ class User:
 
     # FORMAT DATE
     def formatDate(self, date):
-        all = string.maketrans('', '')
-        nodigs = all.translate(all, string.digits)
-        date = date.translate(all, nodigs)
-        return date
+        return date.replace('-','')
