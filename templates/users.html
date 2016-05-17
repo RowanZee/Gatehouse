@@ -138,16 +138,20 @@
 							{% else %}
 								<input type="checkbox" name="{{ weekday.dayname }}check">
 							{% endif %}
-							<label>{{ weekday.dayname }}</label><br />
+							<label>{{ weekday.dayname }}" "</label><br />
 							{% if weekday.allday %}
 								<input type="checkbox" name="{{ weekday.dayname }}allday" checked="checked">
+								<label>All Day </label>
+								<input type="time" pattern="\d{1,2}:\d{2}([ap]m)?" value="00:00" name="{{ weekday.dayname }}timefrom">
+								<label>-</label>
+								<input type="time" pattern="\d{1,2}:\d{2}([ap]m)?" value="23:59" name="{{ weekday.dayname }}timeto">
 							{% else %}
 								<input type="checkbox" name="{{ weekday.dayname }}allday">
+								<label>All Day </label>
+								<input type="time" pattern="\d{1,2}:\d{2}([ap]m)?" value="{{ weekday.startTime }}" name="{{ weekday.dayname }}timefrom">
+								<label>-</label>
+								<input type="time" pattern="\d{1,2}:\d{2}([ap]m)?" value="{{ weekday.endTime }}" name="{{ weekday.dayname }}timeto">
 							{% endif %}
-							<label>All Day </label>
-							<input type="time" pattern="\d{1,2}:\d{2}([ap]m)?" value="{{ weekday.startTime }}" name="{{ weekday.dayname }}timefrom">
-							<label>-</label>
-							<input type="time" pattern="\d{1,2}:\d{2}([ap]m)?" value="{{ weekday.endTime }}" name="{{ weekday.dayname }}timeto">
 							</div>
 						{% endfor %}
 						
