@@ -132,7 +132,11 @@
 							</div>
 						{% endif %}
 						{% for weekday in user.weekday %}
-							<input type="checkbox" name="{{ weekday.dayname }}+check" {% if weekday.checked == 'True'%}checked="checked"{% endif %}>
+							{% if weekday.checked == 'True'%}
+								<input type="checkbox" name="{{ weekday.dayname }}check" checked="checked">
+							{% else %}
+								<input type="checkbox" name="{{ weekday.dayname }}check">
+							{% endif %}
 							<span>{{ weekday.dayname }}</span><br />
 							<label>{{ weekday.checked }}</label>
 							<label>{{ weekday.allday }}</label>
