@@ -300,6 +300,7 @@ def edituser():
         # Uses string for jinja template (May be able to use actual False)
         experationDate = 'False'
 
+
     # Edits user, returns true if success
     if database.editUser(userID, username, password, isAdmin, experationDate):
 
@@ -361,6 +362,14 @@ def toggledoor():
     #garage.toggleDoor()
 
     # Reloads index
+    return redirect(url_for('index'))
+
+@app.route('/togglegate/', methods=['POST'])
+# GET - None
+# POST - Toggles the status of the door
+def toggledoor():
+    if request.headers['Content-Type'] == 'application/json':
+        return "JSON Message: " + json.dumps(request.json)
     return redirect(url_for('index'))
 
 def authoriseUser(user):
