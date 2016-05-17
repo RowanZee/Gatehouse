@@ -132,6 +132,7 @@
 							</div>
 						{% endif %}
 						{% for weekday in user.weekday %}
+							<div>
 							{% if weekday.checked %}
 								<input type="checkbox" name="{{ weekday.dayname }}check" checked="checked">
 							{% else %}
@@ -145,6 +146,7 @@
 							{% endif %}
 							<label>{{ weekday.startTime }}</label>
 							<label>{{ weekday.endTime }}</label>
+							</div>
 						{% endfor %}
 						
 						<input type="submit" class="button update-user" value="Update User">
