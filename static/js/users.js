@@ -31,11 +31,7 @@
         return false;
       }
     }
-
-    alert("All input fields have been validated!");
     return true;
-
-        return false;
     }
 $(document).ready(function () {
 
