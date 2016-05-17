@@ -367,7 +367,7 @@ def toggledoor():
 @app.route('/togglegate/', methods=['POST'])
 # GET - None
 # POST - Toggles the status of the door
-def toggledoor():
+def togglegate():
     if request.headers['Content-Type'] == 'application/json':
         return "JSON Message: " + json.dumps(request.json)
     return redirect(url_for('index'))
