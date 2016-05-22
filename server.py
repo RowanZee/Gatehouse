@@ -369,9 +369,13 @@ def toggledoor():
 
 def authorise_user(username, password):
     #Try find the user in the database
-    user = database.getUser(username)
-    if user:
-        return True
+    dbuser = database.getUser(username)
+    if dbuser:
+        if(security.encrypt(password) == dbuser.password):
+            # Checks if user is temporary and if the date is expired
+            if (dbuser.experationDate != 'False' and user.isExpired(dbuser.experationDate)):
+                return False
+            return True
     #User was not found in the database - Check if the system admin
     if (username == app.config['USERNAME'] and password == app.config['PASSWORD']):
         return True
