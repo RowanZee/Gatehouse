@@ -2,16 +2,16 @@
 		// regular expression to match required time format
 		re = /^(\d{1,2}):(\d{2})([ap]m)?$/;
 
-    if(form.montimefrom.value != '') {
-      if(regs = form.montimefrom.value.match(re)) {
-        if(regs[3]) {
-          // 12-hour value between 1 and 12
-          if(regs[1] < 1 || regs[1] > 12) {
-            alert("Invalid value for hours: " + regs[1]);
-            form.montimefrom.focus();
-            return false;
-          }
-        } else {
+		if(form.montimefrom.value != '') {
+			if(regs = form.montimefrom.value.match(re)) {
+				if(regs[3]) {
+					// 12-hour value between 1 and 12
+					if(regs[1] < 1 || regs[1] > 12) {
+						alert("Invalid value for hours: " + regs[1]);
+						form.montimefrom.focus();
+						return false;
+					}
+				} else {
           // 24-hour value between 0 and 23
           if(regs[1] > 23) {
             alert("Invalid value for hours: " + regs[1]);

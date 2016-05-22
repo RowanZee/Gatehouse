@@ -1,6 +1,7 @@
 # IMPORTS
 from flask import Flask, request, redirect, url_for, \
-    render_template, json
+    render_template, json, abort
+from flask.ext.httpauth import HTTPBasicAuth
 import random
 
 # MODULES
@@ -24,6 +25,7 @@ database = Database()
 garage = Garage()
 USERNAME = settings.username()
 PASSWORD = settings.password()
+auth = HTTPBasicAuth()
 
 # Secret Key for sessions
 SECRET_KEY = str(random.random())
@@ -364,13 +366,29 @@ def toggledoor():
     # Reloads index
     return redirect(url_for('index'))
 
+
+def authorise_user(username, password)
+    #Try find the user in the database
+    user = database.getUser(username)
+    if user:
+        return True
+    #User was not found in the database - Check if the system admin
+    if (username == app.config['USERNAME']) and password == app.config['PASSWORD']):
+        return True
+    return False
+
+@auth.verify_password
+def verify_password(username, password):
+    return authorise_user(username, password)
+
 @app.route('/togglegate/', methods=['POST'])
+@auth.login_required
 # GET - None
 # POST - Toggles the status of the door
 def togglegate():
     if request.headers['Content-Type'] == 'application/json':
         return "JSON Message: " + json.dumps(request.json)
-    return redirect(url_for('index'))
+    abort(401)
 
 def authoriseUser(user):
 # fetches user from database
