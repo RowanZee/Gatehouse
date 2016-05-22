@@ -380,7 +380,7 @@ def authorise_user(username, password):
     #User was not found in the database - Check if the system admin
     if (username == app.config['USERNAME'] and password == app.config['PASSWORD']):
         return returnresult(True, "Authenticated")
-    return return returnresult(True, "Unauthorised")
+    return returnresult(True, "Unauthorised")
 
 @auth.verify_password
 def verify_password(username, password):
