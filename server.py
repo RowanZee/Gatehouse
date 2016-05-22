@@ -368,18 +368,19 @@ def toggledoor():
 
 
 def authorise_user(username, password):
+    returnresult = namedtuple("result", ["isauthorised", "message"])
     #Try find the user in the database
     dbuser = database.getUser(username)
     if dbuser:
         if(security.encrypt(password) == dbuser.password):
             # Checks if user is temporary and if the date is expired
             if (dbuser.experationDate != 'False' and user.isExpired(dbuser.experationDate)):
-                return False
-            return True
+                return returnresult(False, "Expired")
+            return returnresult(True, "Authenticated")
     #User was not found in the database - Check if the system admin
     if (username == app.config['USERNAME'] and password == app.config['PASSWORD']):
-        return True
-    return False
+        return returnresult(True, "Authenticated")
+    return return returnresult(True, "Unauthorised")
 
 @auth.verify_password
 def verify_password(username, password):
@@ -390,7 +391,8 @@ def verify_password(username, password):
 # POST - Toggles the status of the door
 def togglegate():
     if request.headers['Content-Type'] == 'application/json':
-        if authorise_user(request.json['username'],request.json['password']):
+        result = authorise_user(request.json['username'],request.json['password'])
+        if result.isauthorised:
             garage.toggleDoor()
             return json.dumps({'success':True, 'Message':'Success'}), 200, {'ContentType':'application/json'} 
     abort(401)
