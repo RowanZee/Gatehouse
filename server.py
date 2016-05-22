@@ -361,7 +361,7 @@ def toggledoor():
         return redirect(url_for('index', error="UnauthorisedAtThisTime"))
 
     # Toggles Door
-    #garage.toggleDoor()
+    garage.toggleDoor()
 
     # Reloads index
     return redirect(url_for('index'))
@@ -386,8 +386,9 @@ def verify_password(username, password):
 # POST - Toggles the status of the door
 def togglegate():
     if request.headers['Content-Type'] == 'application/json':
-        if authorise_user(request.json['username'],request.json['password']):
-            return "JSON Message: " + json.dumps(request.json)
+        if authorise_user(request.json['username'],request.json['password
+            garage.toggleDoor()
+            return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
     abort(401)
 
 def authoriseUser(user):
