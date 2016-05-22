@@ -386,7 +386,7 @@ def verify_password(username, password):
 # POST - Toggles the status of the door
 def togglegate():
     if request.headers['Content-Type'] == 'application/json':
-        if authorise_user(request.json['username'],request.json['password'])
+        if authorise_user(request.json['username'],request.json['password']):
             return "JSON Message: " + json.dumps(request.json)
     abort(401)
 
