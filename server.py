@@ -382,12 +382,12 @@ def verify_password(username, password):
     return authorise_user(username, password)
 
 @app.route('/togglegate/', methods=['POST'])
-@auth.login_required
 # GET - None
 # POST - Toggles the status of the door
 def togglegate():
     if request.headers['Content-Type'] == 'application/json':
-        return "JSON Message: " + json.dumps(request.json)
+        if authorise_user(request.json['username'],request.json['password'])
+            return "JSON Message: " + json.dumps(request.json)
     abort(401)
 
 def authoriseUser(user):
