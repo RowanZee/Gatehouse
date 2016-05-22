@@ -373,7 +373,7 @@ def authorise_user(username, password):
     if user:
         return True
     #User was not found in the database - Check if the system admin
-    if (username == app.config['USERNAME']) and password == app.config['PASSWORD']):
+    if (username == app.config['USERNAME'] and password == app.config['PASSWORD']):
         return True
     return False
 
