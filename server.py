@@ -392,7 +392,7 @@ def verify_password(username, password):
 def togglegate():
     if request.headers['Content-Type'] == 'application/json':
         result = authorise_user(request.json['username'],request.json['password'])
-        if result.isauthorised:
+        if(result.isauthorised == True):
             garage.toggleDoor()
             return json.dumps({'success':True, 'Message':'Success'}), 200, {'ContentType':'application/json'} 
     abort(401)
