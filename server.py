@@ -367,7 +367,7 @@ def toggledoor():
     return redirect(url_for('index'))
 
 
-def authorise_user(username, password)
+def authorise_user(username, password):
     #Try find the user in the database
     user = database.getUser(username)
     if user:
