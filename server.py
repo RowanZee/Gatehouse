@@ -399,7 +399,7 @@ def togglegate():
         if(result.isauthorised == True):
             if result.tempuser is True:
                 isAuthorised = authoriseUser(username)
-                if isAuthorised is False
+                if isAuthorised is False:
                     return json.dumps({'success':False, 'Message':'Unauthorised'}), 203, {'ContentType':'application/json'} 
             garage.toggleDoor() #STILL NEED TO ADD CODE TO CHECK TIMES +
             return json.dumps({'success':True, 'Message':result.message}), 200, {'ContentType':'application/json'} 
