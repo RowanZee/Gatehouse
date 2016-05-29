@@ -373,10 +373,12 @@ def authorise_user(username, password):
     dbuser = database.getUser(username)
     if dbuser:
         if(security.encrypt(password) == dbuser.password):
+            if dbuser.admin is True:
+                return returnresult(True,"Authorised",False)
             # Checks if user is temporary and if the date is expired
-            if (dbuser.experationDate != 'False' and user.isExpired(dbuser.experationDate)):
+            elif (dbuser.experationDate != 'False' and user.isExpired(dbuser.experationDate)):
                 return returnresult(False, "Expired", True)
-            return returnresult(True, "Authenticated", False)
+            return returnresult(True, "Authorised", True)
     #User was not found in the database - Check if the system admin
     if (username == app.config['USERNAME'] and password == app.config['PASSWORD']):
         return returnresult(True, "Authenticated", False)
@@ -393,7 +395,7 @@ def togglegate():
     if request.headers['Content-Type'] == 'application/json':
         result = authorise_user(request.json['username'],request.json['password'])
         if(result.isauthorised == True):
-            garage.toggleDoor()
+            garage.toggleDoor() #STILL NEED TO ADD CODE TO CHECK TIMES +
             return json.dumps({'success':True, 'Message':'Success'}), 200, {'ContentType':'application/json'} 
         if(result.tempuser == True):
             return json.dumps({'success':False, 'Message':'Expired Account'}), 203, {'ContentType':'application/json'} 
