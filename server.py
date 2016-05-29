@@ -367,7 +367,7 @@ def toggledoor():
     return redirect(url_for('index'))
 
 
-def authorise_user(username, password):
+def authenticateUser(username, password):
     returnresult = namedtuple("result", ["isauthorised", "message", "tempuser"])
     #Try find the user in the database
     dbuser = database.getUser(username)
@@ -386,15 +386,21 @@ def authorise_user(username, password):
 
 @auth.verify_password
 def verify_password(username, password):
-    return authorise_user(username, password)
+    return authenticateUser(username, password)
 
 @app.route('/togglegate/', methods=['POST'])
 # GET - None
 # POST - Toggles the status of the door
 def togglegate():
     if request.headers['Content-Type'] == 'application/json':
-        result = authorise_user(request.json['username'],request.json['password'])
+        username = request.json['username']
+        password = request.json['password']
+        result = authenticateUser(username,password)
         if(result.isauthorised == True):
+            if result.tempuser is True:
+                isAuthorised = authoriseUser(username)
+                if isAuthorised is False
+                    return json.dumps({'success':False, 'Message':'Unauthorised'}), 203, {'ContentType':'application/json'} 
             garage.toggleDoor() #STILL NEED TO ADD CODE TO CHECK TIMES +
             return json.dumps({'success':True, 'Message':result.message}), 200, {'ContentType':'application/json'} 
         elif(result.tempuser == True):
