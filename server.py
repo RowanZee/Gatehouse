@@ -377,7 +377,7 @@ def authorise_user(username, password):
                 return returnresult(True,"Authenticated admin",False)
             # Checks if user is temporary and if the date is expired
             elif (dbuser.experationDate != 'False' and user.isExpired(dbuser.experationDate)):
-                return returnresult(False, "User access expired", True)
+                return returnresult(False, "Temporary user expired", True)
             return returnresult(True, "Authenticated temporary user", True)
     #User was not found in the database - Check if the system admin
     if (username == app.config['USERNAME'] and password == app.config['PASSWORD']):
@@ -397,9 +397,10 @@ def togglegate():
         if(result.isauthorised == True):
             garage.toggleDoor() #STILL NEED TO ADD CODE TO CHECK TIMES +
             return json.dumps({'success':True, 'Message':result.message}), 200, {'ContentType':'application/json'} 
-        if(result.tempuser == True):
+        elif(result.tempuser == True):
             return json.dumps({'success':False, 'Message':result.message}), 203, {'ContentType':'application/json'} 
-    abort(401)
+        else:
+            return json.dumps({'success':False, 'Message':result.message}), 401, {'ContentType':'application/json'} 
 
 def authoriseUser(user):
 # fetches user from database
