@@ -378,7 +378,7 @@ def authorise_user(username, password):
             # Checks if user is temporary and if the date is expired
             elif (dbuser.experationDate != 'False' and user.isExpired(dbuser.experationDate)):
                 return returnresult(False, "User access expired", True)
-            return returnresult(True, "Authorised", True)
+            return returnresult(True, "Authorised temporary user", True)
     #User was not found in the database - Check if the system admin
     if (username == app.config['USERNAME'] and password == app.config['PASSWORD']):
         return returnresult(True, "Authorised admin", False)
