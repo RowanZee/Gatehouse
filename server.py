@@ -384,6 +384,17 @@ def authenticateUser(username, password):
         return returnresult(True, "Authenticated admin", False)
     return returnresult(False, "Unauthenticated", False)
 
+@app.route('/authenticate/', methods=['POST'])
+# GET - None
+# POST - Check if user exists
+def authenticateUserAPI():
+    if request.headers['Content-Type'] == 'application/json':
+        username = request.json['username']
+        password = request.json['password']
+        result = authenticateUser(username,password)
+        return json.dumps({'isAuth':result.isauthorised, 'Message':result.message, 'User':result.tempuser}), 200, {'ContentType':'application/json'} 
+    return json.dumps({'success':False), 401, {'ContentType':'application/json'} 
+
 @auth.verify_password
 def verify_password(username, password):
     return authenticateUser(username, password)
