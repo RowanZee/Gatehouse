@@ -380,21 +380,24 @@ def getallUsers():
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):
-    returnresult = namedtuple("result", ["isauthorised", "message", "tempuser"])
+    returnresult = namedtuple("result", ["isauthorised", "message", "tempuser", "permuser"])
     #Try find the user in the database
     dbuser = database.getUser(username)
     if dbuser:
         if(security.encrypt(password) == dbuser.password):
             if dbuser.admin is True:
-                return returnresult(True,"Authenticated admin",False)
+                return returnresult(True,"Authenticated admin",False, False)
+            #Check for permanent user Status (1 below admin status)
+            elif dbuser.permuser:
+                return returnresult(False,"Authenticated admin",False, True)
             # Checks if user is temporary and if the date is expired
-            elif (dbuser.experationDate != 'False' and user.isExpired(dbuser.experationDate)):
-                return returnresult(False, "Temporary user expired", True)
-            return returnresult(True, "Authenticated temporary user", True)
+            elif (dbuser.expirationDate != 'False' and user.isExpired(dbuser.expirationDate)):
+                return returnresult(False, "Temporary user expired", True, False)
+            return returnresult(True, "Authenticated temporary user", True, False)
     #User was not found in the database - Check if the system admin
     if (username == app.config['USERNAME'] and password == app.config['PASSWORD']):
-        return returnresult(True, "Authenticated admin", False)
-    return returnresult(False, "Unauthenticated", False)
+        return returnresult(True, "Authenticated admin", False, False)
+    return returnresult(False, "Unauthenticated", False, False)
 
 @app.route('/authenticate/', methods=['POST'])
 # GET - None
@@ -404,7 +407,7 @@ def authenticateUserAPI():
         username = request.json['username']
         password = request.json['password']
         result = authenticateUser(username,password)
-        return json.dumps({'isAuth':result.isauthorised, 'Message':result.message, 'User':result.tempuser}), 200, {'ContentType':'application/json'} 
+        return json.dumps({'isAuth':result.isauthorised, 'Message':result.message, 'isTmpUser':result.tempuser, 'isPerm':result.permuser}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 @auth.verify_password
