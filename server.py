@@ -65,8 +65,8 @@ def login():
         if (username == databaseUser.username and
                 security.encrypt(password) == databaseUser.password):
             # Checks if user is temporary and if the date is expired
-            if (databaseUser.experationDate != 'False' and
-                    user.isExpired(databaseUser.experationDate)):
+            if (databaseUser.expirationDate != 'False' and
+                    user.isExpired(databaseUser.expirationDate)):
                 # Returns expired message
                 error = "Your temporary account has expired."
                 return render_template('login.html', error=error)
