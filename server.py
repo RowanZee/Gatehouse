@@ -390,7 +390,7 @@ def authenticateUser(username, password):
             #Check for permanent user Status (1 below admin status)
             elif dbuser.permuser:
                 return returnresult(False,"Authenticated admin",False, True)
-            # Checks if user is temporary and if the date is expired
+            #Checks if user is temporary and if the date is expired
             elif (dbuser.expirationDate != 'False' and user.isExpired(dbuser.expirationDate)):
                 return returnresult(False, "Temporary user expired", True, False)
             return returnresult(True, "Authenticated temporary user", True, False)
@@ -407,7 +407,7 @@ def authenticateUserAPI():
         username = request.json['username']
         password = request.json['password']
         result = authenticateUser(username,password)
-        return json.dumps({'isAuth':result.isauthorised, 'Message':result.message, 'isTmpUser':result.tempuser, 'isPerm':result.permuser}), 200, {'ContentType':'application/json'} 
+        return json.dumps({'isAuth':result.isauthorised, 'Message':result.message, 'isTmp':result.tempuser, 'isPerm':result.permuser}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 @auth.verify_password
