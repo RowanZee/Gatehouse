@@ -21,9 +21,9 @@ class Database:
         db.create_all()
 
     # CREATE USER
-    def createUser(self, username, password, admin, experationDate):
+    def createUser(self, username, password, admin, permuser, parentuser, expirationDate):
         try:
-            newUser = UserModel(username, password, admin, experationDate)
+            newUser = UserModel(username, password, admin, permuser, parentuser, expirationDate)
             db.session.add(newUser)
             db.session.commit()
             return True
@@ -98,3 +98,6 @@ class Database:
         weekdayinfo = namedtuple("weekdayinfo", ["isactive", "isalldayactive", "fromtime", "totime"])
         week_day = weekDay.query.select_from(UserModel).join(UserModel.weekday).filter(UserModel.username == userName).filter(weekDay.dayname==dayOfWeek).first()
         return weekdayinfo(week_day.checked, week_day.allday, week_day.startTime, week_day.endTime)
+
+    def getallUsers(self, userName):
+        

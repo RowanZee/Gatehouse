@@ -11,16 +11,20 @@ class UserModel(db.Model):
     __tablename__ = 'usermodel'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
-    password = db.Column(db.String(120), unique=True)
+    password = db.Column(db.String(120))
     admin = db.Column(db.Boolean())
-    experationDate = db.Column(db.String(80))
+    permuser = db.Column(db.Boolean())
+    parentuser = db.Column(db.String(80))
+    expirationDate = db.Column(db.String(80))
     weekday = db.relationship('weekDay', cascade='all,delete-orphan', single_parent=True, backref=db.backref('usermodel', lazy='joined'))
 
-    def __init__(self, username, password, admin, experationDate):
+    def __init__(self, username, password, admin, permuser, parentuser, expirationDate):
         self.username = username
         self.password = password
         self.admin = admin
-        self.experationDate = experationDate
+        self.permuser = permuser
+        self.parentuser = parentuser
+        self.experationDate = expirationDate
 
 class weekDay(db.Model):
     __tablename__ = 'weekday'

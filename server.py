@@ -366,6 +366,18 @@ def toggledoor():
     # Reloads index
     return redirect(url_for('index'))
 
+@app.route('/getusers/', methods=['POST'])
+#GET - None
+#POST - Returns a list of all users registered to the logged in user
+def getallUsers():
+    if request.headers['Content-Type'] == 'application/json':
+        username = request.json['username']
+        password = request.json['password']
+        result = authenticateUser(username,password)
+        if result.isauthorised == True:
+            users = database.get
+        return json.dumps({'isAuth':result.isauthorised, 'Message':result.message}), 200, {'ContentType':'application/json'} 
+    return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):
     returnresult = namedtuple("result", ["isauthorised", "message", "tempuser"])
@@ -393,7 +405,7 @@ def authenticateUserAPI():
         password = request.json['password']
         result = authenticateUser(username,password)
         return json.dumps({'isAuth':result.isauthorised, 'Message':result.message, 'User':result.tempuser}), 200, {'ContentType':'application/json'} 
-    return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'}
+    return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 @auth.verify_password
 def verify_password(username, password):
