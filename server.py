@@ -377,7 +377,7 @@ def getallUsers():
         result = authenticateUser(username,password)
         if result.isauthorised is True:
             users = database.getallUsers(username,adminstatus)
-            return json.dumps({users}), 200, {'ContentType':'application/json'} 
+            return json.dumps(users), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):
