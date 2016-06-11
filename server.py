@@ -373,10 +373,11 @@ def getallUsers():
     if request.headers['Content-Type'] == 'application/json':
         username = request.json['username']
         password = request.json['password']
+        adminstatus = request.json['isadmin']
         result = authenticateUser(username,password)
-        if result.isauthorised == True:
-            users = database.get
-        return json.dumps({'isAuth':result.isauthorised, 'Message':result.message}), 200, {'ContentType':'application/json'} 
+        if result.isauthorised is True:
+            users = database.getallUsers(username,adminstatus)
+            return json.dumps({users}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):

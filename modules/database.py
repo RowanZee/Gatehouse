@@ -99,6 +99,8 @@ class Database:
         week_day = weekDay.query.select_from(UserModel).join(UserModel.weekday).filter(UserModel.username == userName).filter(weekDay.dayname==dayOfWeek).first()
         return weekdayinfo(week_day.checked, week_day.allday, week_day.startTime, week_day.endTime)
 
-    def getallUsers(self, userName):
-        users = UserModel.query.filter_by(username=username)
-        return users
+    def getallUsers(self, userName, admin=False):
+        if admin:
+            return UserModel.query.all()
+        else:
+            return UserModel.query.filter_by(parentuser=userName).all()
