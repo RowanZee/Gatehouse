@@ -168,9 +168,18 @@ def users():
     # Checks if temp user is checked
     if request.form.get('tempuser'):
         # Sets experation date from page
-        experationDate = str(request.form.get('dateTmp'))
+        expirationDate = str(request.form.get('dateTmp'))
     else:
-        experationDate = 'False'
+        expirationDate = 'False'
+
+    # Checks if permuser is checked
+    if request.form.get('permuser'):
+        # A checkbox does not return true or false, so we set it here
+        permuser = True
+    else:
+        permuser = False
+
+    parentname = request.form['parentname']
 
     #check Monday details
     daycheckname = 'moncheck'
@@ -225,7 +234,7 @@ def users():
     sunday = database.createDay('Sunday', sundayInfo.isactive, sundayInfo.isalldayactive, sundayInfo.fromtime, sundayInfo.totime)
 
     # Creates user - add in check for false return
-    database.createNewUser(username, password, isAdmin, experationDate, monday, tuesday, wednesday, thursday, friday, saturday, sunday)
+    database.createNewUser(username, password, isAdmin, permuser, parentname, expirationDate, monday, tuesday, wednesday, thursday, friday, saturday, sunday)
 
     # Returns success message
     success = ("%s was created!")
@@ -297,14 +306,14 @@ def edituser():
     # Checks if temp is checked
     if (tmpStatus):
         # Sets experation date
-        experationDate = str(tmpStatus)
+        expirationDate = str(tmpStatus)
     else:
         # Uses string for jinja template (May be able to use actual False)
-        experationDate = 'False'
+        expirationDate = 'False'
 
 
     # Edits user, returns true if success
-    if database.editUser(userID, username, password, isAdmin, experationDate):
+    if database.editUser(userID, username, password, isAdmin, expirationDate):
 
         # Sends success message
         success = 'User Updated!'
@@ -405,18 +414,10 @@ def addUsers():
             Friday = database.createDayorDefault('Friday',FridayJSON['active'],FridayJSON['allday'],FridayJSON['startime'],FridayJSON['endtime'])
             Saturday = database.createDayorDefault('Saturday',SaturdayJSON['active'],SaturdayJSON['allday'],SaturdayJSON['startime'],SaturdayJSON['endtime'])
             Sunday = database.createDayorDefault('Sunday',MondayJSON['active'],SundayJSON['allday'],SundayJSON['startime'],SundayJSON['endtime'])
-
-            Monday1 = database.createDay('Monday',True,True,"000","000")
-            Tuesday1 = database.createDay('Tuesday',True,True,"000","000")
-            Wednesday1 = database.createDay('Wednesday',True,True,"000","000")
-            Thursday1 = database.createDay('Thursday',True,True,"000","000")
-            Friday1 = database.createDay('Friday',True,True,"000","000")
-            Saturday1 = database.createDay('Saturday',True,True,"000","000")
-            Sunday1 = database.createDay('Sunday',True,True,"000","000")
             
             newuserJSON = request.json['newuser']
             # Creates user - add in check for false return
-            addstatus = database.createNewUser(newuserJSON['username'], newuserJSON['password'], False, False,username, newuserJSON['expire'], Monday1, Tuesday1, Wednesday1, Thursday1, Friday1, Saturday1, Sunday1)
+            addstatus = database.createNewUser(newuserJSON['username'], newuserJSON['password'], False, False,username, newuserJSON['expire'], Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
             #users = database.getallUsers(username,adminstatus)
             #createDay(self, dayname, dayactive, allday, starttime, endtime):
             return json.dumps({'status':addstatus}), 200, {'ContentType':'application/json'} 

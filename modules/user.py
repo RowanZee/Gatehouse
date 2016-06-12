@@ -15,9 +15,9 @@ class User:
     # EXPIRATION
     def isExpired(self, date):
         now = datetime.now()
-        experationDate = self.formatDate(str(date))
+        expirationDate = self.formatDate(str(date))
         currentDate = str(now.strftime('%Y%m%d'))
-        if int(experationDate) <= int(currentDate):
+        if int(expirationDate) <= int(currentDate):
             return True
         else:
             return False

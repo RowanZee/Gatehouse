@@ -15,7 +15,10 @@
 					<span>Admin</span>
 					<input class="tmpuser" type="checkbox" name="tempuser">
 					<span>Temporary</span>
+					<input type="checkbox" name="permuser">
+					<span>Permanent</span>
 				</div>
+				<input type="text" class="username" placeholder="Parent Name" name="parentname">
 				<div class="date-time hidden">
 				</div>
 				<input class="date-time hidden" type="date" value="2016-04-25" id="tempDate" name="dateTmp">
@@ -113,7 +116,7 @@
 						{% if user.admin %}
 							<i class="fa fa-star-o"></i>
 						{% endif %}
-						{% if user.experationDate != 'False' %}
+						{% if user.expirationDate != 'False' %}
 							<i class="fa fa-clock-o"></i>
 						{% endif %}
 						<i data-id="{{ user.id }}" class="fa fa-trash-o"></i>
@@ -123,14 +126,19 @@
 					<form class="edit-user" action="{{ url_for('edituser') }}?userID={{ user.id }}" method="post">
 						<input type="text" class="username" placeholder="{{ user.username }}" name="username">
 						<input type="password" class="password" placeholder="New Password" name="password">
-						{% if user.experationDate != 'False'%}
-							<input class="date-time" type="date" value="{{ user.experationDate }}" name="dateTmp">
+						<input type="text"  placeholder="{{ user.parentuser }}" name="parentuser">
+						{% if user.expirationDate != 'False'%}
+							<input class="date-time" type="date" value="{{ user.expirationDate }}" name="dateTmp">
 						{% else %}
 							<div>
 								<input type="checkbox" name="adminuser" class="admin-checkbox" {% if user.admin %} checked {% endif %}>
 								<span>Admin User</span>
 							</div>
 						{% endif %}
+							<div>
+								<input type="checkbox" name="permuser" {% if user.permuser %} checked {% endif %}>
+								<span>Admin User</span>
+							</div>
 						{% for weekday in user.weekday %}
 							<div>
 							{% if weekday.checked %}
