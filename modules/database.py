@@ -49,15 +49,17 @@ class Database:
             newDay = weekDay(dayname, dayactive, allday, starttime, endtime)
             return newDay
         except:
-            return null
+            return None
 
     #Create day otherwise Default it if failed
     def createDayorDefault(self, dayname, dayactive, allday, starttime, endtime):
         try:
-            if (createDay(dayname, dayactive, allday, starttime, endtime) == null):
-                createday(dayname, False, False, 0,0)
+            newDay = createDay(dayname, dayactive, allday, starttime, endtime)
+            if (newDay == None):
+                newDay = createday(dayname, False, False, 0,0)
+                return newDay
         except:
-            return null
+            return None
 
     # EDIT USER
     def editUser(self, userID, username, password, admin, expirationDate):
