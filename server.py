@@ -387,11 +387,13 @@ def addUsers():
     if request.headers['Content-Type'] == 'application/json':
         username = request.json['username']
         password = request.json['password']
-        adminstatus = request.json['isadmin']
         result = authenticateUser(username,password)
         if result.isauthorised is True:
+            weekdaysJSON = request.json['weekdays']
+            MondayJSON = weekdaysJSON['Monday']
             #users = database.getallUsers(username,adminstatus)
-            return json.dumps(request.json['weekdays']), 200, {'ContentType':'application/json'} 
+            #createDay(self, dayname, dayactive, allday, starttime, endtime):
+            return json.dumps(MondayJSON), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):
