@@ -55,7 +55,7 @@ class Database:
     #Create day otherwise Default it if failed
     def createDayorDefault(self, dayname, dayactive, allday, starttime, endtime):
         try:
-            newDay = createDay(dayname, dayactive, allday, starttime, endtime)
+            newDay = self.createDay(dayname, dayactive, allday, starttime, endtime)
             if (newDay == None):
                 newDay = createday(dayname, False, False, 0,0)
             return newDay

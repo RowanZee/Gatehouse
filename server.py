@@ -1,7 +1,7 @@
 # IMPORTS
 from flask import Flask, request, redirect, url_for, \
     render_template, json, abort
-from flask.ext.httpauth import HTTPBasicAuth
+#from flask.ext.httpauth import HTTPBasicAuth
 import random
 
 # MODULES
