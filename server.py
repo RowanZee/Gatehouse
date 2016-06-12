@@ -398,13 +398,13 @@ def addUsers():
             SaturdayJSON = weekdaysJSON['Saturday']
             SundayJSON = weekdaysJSON['Sunday']
             
-            Monday = createDayorDefault('Monday',MondayJSON['active'],MondayJSON['allday'],MondayJSON['startime'],MondayJSON['endtime'])
-            Tuesday = createDayorDefault('Tuesday',TuesdayJSON['active'],TuesdayJSON['allday'],TuesdayJSON['startime'],TuesdayJSON['endtime'])
-            Wednesday = createDayorDefault('Wednesday',WednesdayJSON['active'],WednesdayJSON['allday'],WednesdayJSON['startime'],WednesdayJSON['endtime'])
-            Thursday = createDayorDefault('Thursday',ThursdayJSON['active'],ThursdayJSON['allday'],ThursdayJSON['startime'],ThursdayJSON['endtime'])
-            Friday = createDayorDefault('Friday',FridayJSON['active'],FridayJSON['allday'],FridayJSON['startime'],FridayJSON['endtime'])
-            Saturday = createDayorDefault('Saturday',SaturdayJSON['active'],SaturdayJSON['allday'],SaturdayJSON['startime'],SaturdayJSON['endtime'])
-            Sunday = createDayorDefault('Sunday',MondayJSON['active'],SundayJSON['allday'],SundayJSON['startime'],SundayJSON['endtime'])
+            Monday = database.createDayorDefault('Monday',MondayJSON['active'],MondayJSON['allday'],MondayJSON['startime'],MondayJSON['endtime'])
+            Tuesday = database.createDayorDefault('Tuesday',TuesdayJSON['active'],TuesdayJSON['allday'],TuesdayJSON['startime'],TuesdayJSON['endtime'])
+            Wednesday = database.createDayorDefault('Wednesday',WednesdayJSON['active'],WednesdayJSON['allday'],WednesdayJSON['startime'],WednesdayJSON['endtime'])
+            Thursday = database.createDayorDefault('Thursday',ThursdayJSON['active'],ThursdayJSON['allday'],ThursdayJSON['startime'],ThursdayJSON['endtime'])
+            Friday = database.createDayorDefault('Friday',FridayJSON['active'],FridayJSON['allday'],FridayJSON['startime'],FridayJSON['endtime'])
+            Saturday = database.createDayorDefault('Saturday',SaturdayJSON['active'],SaturdayJSON['allday'],SaturdayJSON['startime'],SaturdayJSON['endtime'])
+            Sunday = database.createDayorDefault('Sunday',MondayJSON['active'],SundayJSON['allday'],SundayJSON['startime'],SundayJSON['endtime'])
             
             newuserJSON = request.json['newuser']
             # Creates user - add in check for false return
