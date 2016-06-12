@@ -412,7 +412,7 @@ def addUsers():
             Thursday1 = database.createDay('Thursday',True,True,"000","000")
             Friday1 = database.createDay('Friday',True,True,"000","000")
             Saturday1 = database.createDay('Saturday',True,True,"000","000")
-            Sunday1 = database.createDay('Sunday',True,True,"000",,"000")
+            Sunday1 = database.createDay('Sunday',True,True,"000","000")
             
             newuserJSON = request.json['newuser']
             # Creates user - add in check for false return
