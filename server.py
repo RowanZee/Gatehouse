@@ -405,10 +405,18 @@ def addUsers():
             Friday = database.createDayorDefault('Friday',FridayJSON['active'],FridayJSON['allday'],FridayJSON['startime'],FridayJSON['endtime'])
             Saturday = database.createDayorDefault('Saturday',SaturdayJSON['active'],SaturdayJSON['allday'],SaturdayJSON['startime'],SaturdayJSON['endtime'])
             Sunday = database.createDayorDefault('Sunday',MondayJSON['active'],SundayJSON['allday'],SundayJSON['startime'],SundayJSON['endtime'])
+
+            Monday1 = database.createDay('Monday',True,True,"000","000")
+            Tuesday1 = database.createDay('Tuesday',True,True,"000","000")
+            Wednesday1 = database.createDay('Wednesday',True,True,"000","000")
+            Thursday1 = database.createDay('Thursday',True,True,"000","000")
+            Friday1 = database.createDay('Friday',True,True,"000","000")
+            Saturday1 = database.createDay('Saturday',True,True,"000","000")
+            Sunday1 = database.createDay('Sunday',True,True,"000",,"000")
             
             newuserJSON = request.json['newuser']
             # Creates user - add in check for false return
-            addstatus = database.createNewUser(newuserJSON['username'], newuserJSON['password'], False, False,username, newuserJSON['expire'], Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
+            addstatus = database.createNewUser(newuserJSON['username'], newuserJSON['password'], False, False,username, newuserJSON['expire'], Monday1, Tuesday1, Wednesday1, Thursday1, Friday1, Saturday1, Sunday1)
             #users = database.getallUsers(username,adminstatus)
             #createDay(self, dayname, dayactive, allday, starttime, endtime):
             return json.dumps({'status':addstatus}), 200, {'ContentType':'application/json'} 
