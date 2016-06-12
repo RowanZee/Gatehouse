@@ -391,9 +391,27 @@ def addUsers():
         if result.isauthorised is True:
             weekdaysJSON = request.json['weekdays']
             MondayJSON = weekdaysJSON['Monday']
+            TuesdayJSON = weekdaysJSON['Tuesday']
+            WednesdayJSON = weekdaysJSON['Wednesday']
+            ThursdayJSON = weekdaysJSON['Thursday']
+            FridayJSON = weekdaysJSON['Friday']
+            SaturdayJSON = weekdaysJSON['Saturday']
+            SundayJSON = weekdaysJSON['Sunday']
+            
+            Monday = createDayorDefault('Monday',MondayJSON['active'],MondayJSON['allday'],MondayJSON['startime'],MondayJSON['endtime'])
+            Tuesday = createDayorDefault('Tuesday',TuesdayJSON['active'],TuesdayJSON['allday'],TuesdayJSON['startime'],TuesdayJSON['endtime'])
+            Wednesday = createDayorDefault('Wednesday',WednesdayJSON['active'],WednesdayJSON['allday'],WednesdayJSON['startime'],WednesdayJSON['endtime'])
+            Thursday = createDayorDefault('Thursday',ThursdayJSON['active'],ThursdayJSON['allday'],ThursdayJSON['startime'],ThursdayJSON['endtime'])
+            Friday = createDayorDefault('Friday',FridayJSON['active'],FridayJSON['allday'],FridayJSON['startime'],FridayJSON['endtime'])
+            Saturday = createDayorDefault('Saturday',SaturdayJSON['active'],SaturdayJSON['allday'],SaturdayJSON['startime'],SaturdayJSON['endtime'])
+            Sunday = createDayorDefault('Sunday',MondayJSON['active'],SundayJSON['allday'],SundayJSON['startime'],SundayJSON['endtime'])
+            
+            newuserJSON = request.json['newuser']
+            # Creates user - add in check for false return
+            addstatus = database.createNewUser(newuserJSON['username'], newuserJSON['password'], False, False,username, newuserJSON['expire'], Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
             #users = database.getallUsers(username,adminstatus)
             #createDay(self, dayname, dayactive, allday, starttime, endtime):
-            return json.dumps(MondayJSON), 200, {'ContentType':'application/json'} 
+            return json.dumps({'status':addstatus}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):

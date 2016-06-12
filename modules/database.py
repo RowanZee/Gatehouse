@@ -31,9 +31,9 @@ class Database:
             return False
 
     # CREATE NEW USER
-    def createNewUser(self, username, password, admin, experationDate, day1, day2, day3, day4, day5, day6, day7):
+    def createNewUser(self, username, password, admin, permuser, parentuser, expirationDate, day1, day2, day3, day4, day5, day6, day7):
         try:
-            newUser = UserModel(username, password, admin, experationDate)
+            newUser = UserModel(username, password, admin, permuser, parentuser, expirationDate)
             newUser.weekday = [day1, day2, day3, day4, day5, day6, day7]
             db.session.add(newUser)
             db.session.commit()
@@ -51,16 +51,24 @@ class Database:
         except:
             return null
 
+    #Create day otherwise Default it if failed
+    def createDayorDefault(self, dayname, dayactive, allday, starttime, endtime):
+        try:
+            if (createDay(dayname, dayactive, allday, starttime, endtime) == null):
+                createday(dayname, False, False, 0,0)
+        except:
+            return null
+
     # EDIT USER
-    def editUser(self, userID, username, password, admin, experationDate):
+    def editUser(self, userID, username, password, admin, expirationDate):
         try:
             user = self.getUser(None, userID)
             if username:
                 user.username = username
             if password:
                 user.password = password
-            if experationDate is not user.experationDate:
-                user.experationDate = experationDate
+            if expirationDate is not user.expirationDate:
+                user.expirationDate = expirationDate
 
             user.admin = admin
             db.session.commit()
