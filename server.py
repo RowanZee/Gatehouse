@@ -380,6 +380,20 @@ def getallUsers():
             return json.dumps(users), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
+@app.route('/adduser/', methods=['POST'])
+#GET - None
+#POST - Returns a list of all users registered to the logged in user
+def addUsers():
+    if request.headers['Content-Type'] == 'application/json':
+        username = request.json['username']
+        password = request.json['password']
+        adminstatus = request.json['isadmin']
+        result = authenticateUser(username,password)
+        if result.isauthorised is True:
+            #users = database.getallUsers(username,adminstatus)
+            return json.dumps(request.json['weekdays']), 200, {'ContentType':'application/json'} 
+    return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
+
 def authenticateUser(username, password):
     returnresult = namedtuple("result", ["isauthorised", "message", "tempuser", "permuser", "adminuser"])
     #Try find the user in the database
