@@ -57,8 +57,9 @@ class Database:
             newDay = createDay(dayname, dayactive, allday, starttime, endtime)
             if (newDay == None):
                 newDay = createday(dayname, False, False, 0,0)
-                return newDay
+            return newDay
         except:
+            print("Error creating day")
             return None
 
     # EDIT USER
