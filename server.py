@@ -25,7 +25,7 @@ database = Database()
 garage = Garage()
 USERNAME = settings.username()
 PASSWORD = settings.password()
-auth = HTTPBasicAuth()
+#auth = HTTPBasicAuth()
 
 # Secret Key for sessions
 SECRET_KEY = str(random.random())
