@@ -3,6 +3,7 @@ from flask import Flask, request, redirect, url_for, \
     render_template, json, abort
 #from flask.ext.httpauth import HTTPBasicAuth
 import random
+import jsonpickle
 
 # MODULES
 from modules.security import Security
@@ -391,7 +392,7 @@ def getallUsers():
 
 @app.route('/adduser/', methods=['POST'])
 #GET - None
-#POST - Returns a list of all users registered to the logged in user
+#POST - Adds a user to the db
 def addUsers():
     if request.headers['Content-Type'] == 'application/json':
         username = request.json['username']
@@ -421,6 +422,20 @@ def addUsers():
             #users = database.getallUsers(username,adminstatus)
             #createDay(self, dayname, dayactive, allday, starttime, endtime):
             return json.dumps({'status':addstatus}), 200, {'ContentType':'application/json'} 
+    return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
+
+@app.route('/getuserlist/', methods=['POST'])
+#GET - None
+#POST - Returns a list of all users registered to the logged in user
+def RetrieveUsers():
+    if request.headers['Content-Type'] == 'application/json':
+        username = request.json['username']
+        password = request.json['password']
+        result = authenticateUser(username,password)
+        if result.isauthorised is True:
+            userlist = getallUsers(username)
+            userlistJSON = jsonpickle.encode(userlist)
+            return json.dumps(userlistJSON), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):
