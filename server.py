@@ -445,9 +445,9 @@ def authenticateUserAPI():
         return json.dumps({'isAuth':result.isauthorised, 'Message':result.message, 'isTemp':result.tempuser, 'isPerm':result.permuser, 'isAdmin':result.adminuser}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
-@auth.verify_password
-def verify_password(username, password):
-    return authenticateUser(username, password)
+#@auth.verify_password
+#def verify_password(username, password):
+#    return authenticateUser(username, password)
 
 @app.route('/togglegate/', methods=['POST'])
 # GET - None
