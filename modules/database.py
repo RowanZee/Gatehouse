@@ -49,6 +49,7 @@ class Database:
             newDay = weekDay(dayname, dayactive, allday, starttime, endtime)
             return newDay
         except:
+            dprint("Error creating Day")
             return None
 
     #Create day otherwise Default it if failed
@@ -59,7 +60,7 @@ class Database:
                 newDay = createday(dayname, False, False, 0,0)
             return newDay
         except:
-            print("Error creating day")
+            print("Error creating default Day")
             return None
 
     # EDIT USER
