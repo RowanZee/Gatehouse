@@ -113,10 +113,10 @@ class Database:
 
     def getallUsers(self, userName, admin=False):
         if admin:
-            userlist = UserModel.query.all()
+            return UserModel.query.all()
+        else:
+            userlist = UserModel.query.filter_by(parentuser=userName).all()
             full_schema = UserModel.UserSchema()
             result, errors = full_schema.dump(userlist)
             print(result)
-            return userlist
-        else:
-            return UserModel.query.filter_by(parentuser=userName).all()
+            return 
