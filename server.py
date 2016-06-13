@@ -434,9 +434,9 @@ def RetrieveUsers():
         result = authenticateUser(username,password)
         if result.isauthorised is True:
             userlist = database.getallUsers(username)
-            #userlistJSON = jsonpickle.encode(userlist)
+            userlistJSON = jsonpickle.encode(userlist)
             
-            return json.dumps(userlist), 200, {'ContentType':'application/json'} 
+            return json.dumps(userlistJSON), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):
