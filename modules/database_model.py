@@ -58,7 +58,21 @@ class ComplexEncoder(json.JSONEncoder):
         else:
             return json.JSONEncoder.default(self, obj)
 
+class WeekdaySchema(Schema):
+    id = fields.Int(dump_only=True)
+    dayname = fields.Str()
+    checked = fields.Boolean()
+    allday = fields.Boolean()
+    startTime = fields.Str()
+    endTime = fields.Str()
+
 class UserSchema(Schema):
     id = fields.Int(dump_only=True)
     username = fields.Str()
     password = fields.Str()
+    admin = fields.Boolean()
+    permuser = fields.Boolean()
+    parentuser = fields.Str()
+    expirationDate = fields.Str()
+    weekday = fields.Nested(WeekdaySchema)
+

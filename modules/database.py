@@ -1,7 +1,7 @@
 from modules.database_model import db
 from modules.database_model import UserModel
 from modules.database_model import weekDay
-from modules.database_model import UserSchema
+from modules.database_model import WeekdaySchema, UserSchema
 from collections import namedtuple
 import os
 
@@ -117,8 +117,8 @@ class Database:
             return UserModel.query.all()
         else:
             userlist = UserModel.query.filter_by(parentuser=userName).first()
-            #full_schema = UserSchema()
-            #result, errors = full_schema.dump(userlist)
+            full_schema = UserSchema()
+            result, errors = full_schema.dump(userlist)
             #print(result)
             print(userlist.__dict__)
             return userlist
