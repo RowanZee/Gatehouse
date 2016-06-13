@@ -117,7 +117,7 @@ class Database:
             return UserModel.query.all()
         else:
             userlist = UserModel.query.filter_by(parentuser=userName).first()
-            full_schema = UserSchema()
+            full_schema = UserSchema(many=True)
             result, errors = full_schema.dump(userlist)
             #print(result)
             #print(userlist.__dict__)
