@@ -1,5 +1,6 @@
 from flask import Flask, json
 from flask.ext.sqlalchemy import SQLAlchemy
+from marshmallow import Schema, fields
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../tmp/database.db'
@@ -56,3 +57,8 @@ class ComplexEncoder(json.JSONEncoder):
             return obj.reprJSON()
         else:
             return json.JSONEncoder.default(self, obj)
+
+class UserSchema(Schema):
+
+    class Meta:
+        fields = ("id", "username", "password", "admin")
