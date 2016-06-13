@@ -436,7 +436,7 @@ def RetrieveUsers():
             userlist = database.getallUsers(username)
             userlistJSON = jsonpickle.encode(userlist)
             
-            return userlistJSON #json.dumps(userlistJSON), 200, {'ContentType':'application/json'} 
+            return json.dumps(userlist), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):
