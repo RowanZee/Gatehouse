@@ -116,7 +116,7 @@ class Database:
         if admin:
             return UserModel.query.all()
         else:
-            userlist = UserModel.query.options(joinedload('weekday')).filter_by(parentuser=userName).first()
+            userlist = UserModel.query.filter_by(parentuser=userName).first()
             #full_schema = UserSchema()
             #result, errors = full_schema.dump(userlist)
             #print(result)

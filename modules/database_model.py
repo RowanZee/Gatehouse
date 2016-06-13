@@ -16,7 +16,7 @@ class UserModel(db.Model):
     permuser = db.Column(db.Boolean())
     parentuser = db.Column(db.String(80))
     expirationDate = db.Column(db.String(80))
-    weekday = db.relationship('weekDay', cascade='all,delete-orphan', single_parent=True, backref=db.backref('usermodel', lazy='joined'))
+    weekday = db.relationship('weekDay', cascade='all,delete-orphan', single_parent=True, backref=db.backref('usermodel', lazy='subquery'))
 
     def __init__(self, username, password, admin, permuser, parentuser, expirationDate):
         self.username = username
