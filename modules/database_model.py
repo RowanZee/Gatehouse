@@ -58,7 +58,7 @@ class ComplexEncoder(json.JSONEncoder):
         else:
             return json.JSONEncoder.default(self, obj)
 
-class AuthorSchema(Schema):
+class UserSchema(Schema):
     id = fields.Int(dump_only=True)
     username = fields.Str()
     password = fields.Str()
