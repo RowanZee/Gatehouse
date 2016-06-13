@@ -435,9 +435,7 @@ def RetrieveUsers():
         if result.isauthorised is True:
             userlist = database.getallUsers(username)
             userlistJSON = jsonpickle.encode(userlist)
-            full_schema = UserSchema()
-            result, errors = full_schema.dump(userlist)
-            print(result)
+            
             return json.dumps(userlistJSON), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
