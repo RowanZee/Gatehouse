@@ -50,3 +50,10 @@ class weekDay(db.Model):
 
     def reprJSON(self):
         return dict(dayname=self.dayname, checked=self.checked, allday=self.allday, startime=self.startTime, endtime=self.endTime) 
+
+class ComplexEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if hasattr(obj,'reprJSON'):
+            return obj.reprJSON()
+        else:
+            return json.JSONEncoder.default(self, obj)
