@@ -1,6 +1,6 @@
 # IMPORTS
 from flask import Flask, request, redirect, url_for, \
-    render_template, json, abort
+    render_template, json, abort, jsonify
 #from flask.ext.httpauth import HTTPBasicAuth
 import random
 import jsonpickle
@@ -436,7 +436,7 @@ def RetrieveUsers():
             userlist = database.getallUsers(username)
             userlistJSON = jsonpickle.encode(userlist)
             
-            return json.dumps(userlistJSON), 200, {'ContentType':'application/json'} 
+            return jsonify(userlist.data) #json.dumps(userlistJSON), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):
