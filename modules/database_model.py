@@ -24,7 +24,11 @@ class UserModel(db.Model):
         self.admin = admin
         self.permuser = permuser
         self.parentuser = parentuser
-        self.experationDate = expirationDate
+        self.expirationDate = expirationDate
+
+    def reprJSON(self):
+        return dict(username=self.username, password=self.password, admin=self.admin, permuser=self.permuser, parentuser=self.parentuser, expirationDate=self.expirationDate) 
+
 
 class weekDay(db.Model):
     __tablename__ = 'weekday'
@@ -43,3 +47,6 @@ class weekDay(db.Model):
         self.allday = allday
         self.startTime = startTime
         self.endTime = endTime
+
+    def reprJSON(self):
+        return dict(dayname=self.dayname, checked=self.checked, allday=self.allday, startime=self.startTime, endtime=self.endTime) 
