@@ -120,5 +120,5 @@ class Database:
             #full_schema = UserSchema()
             #result, errors = full_schema.dump(userlist)
             #print(result)
-            print(userlist.__dict__)
+            print(userlist._asdict())
             return userlist
