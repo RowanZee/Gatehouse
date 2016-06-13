@@ -16,7 +16,7 @@ class UserModel(db.Model):
     permuser = db.Column(db.Boolean())
     parentuser = db.Column(db.String(80))
     expirationDate = db.Column(db.String(80))
-    weekday = db.relationship('weekDay', cascade='all,delete-orphan', single_parent=True, backref=db.backref('usermodel', lazy='subquery'))
+    weekday = db.relationship('weekDay', cascade='all,delete-orphan', single_parent=True, backref=db.backref('usermodel', lazy='dynamic'))
 
     def __init__(self, username, password, admin, permuser, parentuser, expirationDate):
         self.username = username
@@ -58,7 +58,7 @@ class ComplexEncoder(json.JSONEncoder):
         else:
             return json.JSONEncoder.default(self, obj)
 
-class UserSchema(Schema):
-
-    class Meta:
-        fields = ("id", "username", "password", "admin")
+class AuthorSchema(Schema):
+    id = fields.Int(dump_only=True)
+    username = fields.Str()
+    password = fields.Str()
