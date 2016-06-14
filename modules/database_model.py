@@ -26,10 +26,6 @@ class UserModel(db.Model):
         self.parentuser = parentuser
         self.expirationDate = expirationDate
 
-    def reprJSON(self):
-        return dict(username=self.username, password=self.password, admin=self.admin, permuser=self.permuser, parentuser=self.parentuser, expirationDate=self.expirationDate) 
-
-
 class weekDay(db.Model):
     __tablename__ = 'weekday'
     id = db.Column(db.Integer, primary_key=True)
@@ -48,16 +44,6 @@ class weekDay(db.Model):
         self.startTime = startTime
         self.endTime = endTime
 
-    def reprJSON(self):
-        return dict(dayname=self.dayname, checked=self.checked, allday=self.allday, startime=self.startTime, endtime=self.endTime) 
-
-class ComplexEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if hasattr(obj,'reprJSON'):
-            return obj.reprJSON()
-        else:
-            return json.JSONEncoder.default(self, obj)
-
 class WeekdaySchema(Schema):
     id = fields.Int(dump_only=True)
     dayname = fields.Str()
@@ -74,5 +60,5 @@ class UserSchema(Schema):
     permuser = fields.Boolean()
     parentuser = fields.Str()
     expirationDate = fields.Str()
-    weekday = fields.Nested(WeekdaySchema)
+    weekday = fields.Nested(WeekdaySchema, many=True)
 
