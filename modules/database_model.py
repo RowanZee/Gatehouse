@@ -60,5 +60,5 @@ class UserSchema(Schema):
     permuser = fields.Boolean()
     parentuser = fields.Str()
     expirationDate = fields.Str()
-    weekday = fields.Nested(WeekdaySchema, many=True)
+    weekday = fields.Nested(WeekdaySchema, many=True, only=["dayname","checked","allday","startTime","endTime"])
 
