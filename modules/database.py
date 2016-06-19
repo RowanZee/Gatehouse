@@ -129,4 +129,4 @@ class Database:
             db.session.commit()
             return True
         except:
-            return Falses
+            return False

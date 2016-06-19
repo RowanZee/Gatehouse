@@ -431,12 +431,15 @@ def editUser():
         username = request.json['username']
         password = request.json['password']
         result = authenticateUser(username,password)
-        userobjJSON = request.json['userObject'] 
-        usernmJSON = userobjJSON['username']
-        print("searchuserid: " + usernmJSON )
-        #if result.isauthorised is True:
-         #   result = database.updateUser()
-        return json.dumps({'isAuth':False}), 200, {'ContentType':'application/json'} 
+        userobjJSON = request.json['userObject']
+        weekdaysJSON = userobjJSON['weekday']
+        update_username = userobjJSON['username']
+        update_password = userobjJSON['password']
+        update_userID = userobjJSON['id']
+        update_expiredate = userobjJSON['expirationDate']
+        if result.isauthorised is True:
+            update_result = database.updateUser(update_userID, update_username, update_password, update_expiredate)
+            return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 @app.route('/getuserlist/', methods=['POST'])
