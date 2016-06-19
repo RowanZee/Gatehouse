@@ -423,7 +423,7 @@ def addUsers():
             return json.dumps({'status':addstatus}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
-@app.route('/edituser/', methods=['POST'])
+@app.route('/editsingleuser/', methods=['POST'])
 #GET - None
 #POST - Adds a user to the db
 def editUser():
