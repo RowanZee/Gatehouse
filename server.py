@@ -434,7 +434,7 @@ def editUser():
         print("Pass: " + password)
         #result = authenticateUser(username,password)
         #if result.isauthorised is True:
-
+        return json.dumps({'isAuth':False}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 @app.route('/getuserlist/', methods=['POST'])
