@@ -117,6 +117,9 @@ class Database:
             return UserModel.query.all()
         else:
             userlist = UserModel.query.filter_by(parentuser=userName).all()
-            full_schema = UserSchema(many=True, exclude=('id','password','admin','permuser','parentuser', ))
+            full_schema = UserSchema(many=True, exclude=('password','admin','permuser','parentuser', ))
             result, errors = full_schema.dump(userlist)
             return result
+
+    def updateUser(self, userid, username, password, expirationDate, day1, day2, day3, day4, day5, day6, day7):
+        return False

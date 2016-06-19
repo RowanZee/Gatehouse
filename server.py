@@ -430,10 +430,9 @@ def editUser():
     if request.headers['Content-Type'] == 'application/json':
         username = request.json['username']
         password = request.json['password']
-        print("Username: " + username)
-        print("Pass: " + password)
-        #result = authenticateUser(username,password)
+        result = authenticateUser(username,password)
         #if result.isauthorised is True:
+         #   result = 
         return json.dumps({'isAuth':False}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
