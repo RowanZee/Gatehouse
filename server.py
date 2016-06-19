@@ -423,6 +423,20 @@ def addUsers():
             return json.dumps({'status':addstatus}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
+@app.route('/edituser/', methods=['POST'])
+#GET - None
+#POST - Adds a user to the db
+def editUser():
+    if request.headers['Content-Type'] == 'application/json':
+        username = request.json['username']
+        password = request.json['password']
+        print("Username: " + username)
+        print("Pass: " + password)
+        #result = authenticateUser(username,password)
+        #if result.isauthorised is True:
+
+    return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
+
 @app.route('/getuserlist/', methods=['POST'])
 #GET - None
 #POST - Returns a list of all users registered to the logged in user
