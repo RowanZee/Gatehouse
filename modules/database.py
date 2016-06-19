@@ -121,5 +121,12 @@ class Database:
             result, errors = full_schema.dump(userlist)
             return result
 
-    def updateUser(self, userid, username, password, expirationDate, day1, day2, day3, day4, day5, day6, day7):
-        return False
+    def updateUser(self, userID, username, password, expirationDate):
+        try:
+            user = self.getUser(None, userID)
+            if expirationDate is not user.expirationDate:
+                user.expirationDate = expirationDate
+            db.session.commit()
+            return True
+        except:
+            return Falses

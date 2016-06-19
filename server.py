@@ -431,8 +431,11 @@ def editUser():
         username = request.json['username']
         password = request.json['password']
         result = authenticateUser(username,password)
+        userobjJSON = request.json['userObject'] 
+        usernmJSON = userobjJSON['username']
+        print("searchuserid: " + usernmJSON )
         #if result.isauthorised is True:
-         #   result = 
+         #   result = database.updateUser()
         return json.dumps({'isAuth':False}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
