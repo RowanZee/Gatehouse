@@ -130,3 +130,13 @@ class Database:
             return True
         except:
             return False
+
+    # GET USER DEVICE ID
+    def getUserDevice(self, username=None, userID=None):
+        if username:
+            user = UserModel.query.filter_by(username=username).first()
+        elif userID:
+            user = UserModel.query.filter_by(id=userID).first()
+        else:
+            user = None
+        return user.deviceid

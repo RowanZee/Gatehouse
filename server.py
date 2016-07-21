@@ -456,24 +456,26 @@ def RetrieveUsers():
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 def authenticateUser(username, password):
-    returnresult = namedtuple("result", ["isauthorised", "message", "tempuser", "permuser", "adminuser"])
+    returnresult = namedtuple("result", ["isauthorised", "message", "tempuser", "permuser", "adminuser", "deviceID"])
     #Try find the user in the database
     dbuser = database.getUser(username)
     if dbuser:
         if(security.encrypt(password) == dbuser.password):
+            #user was found and password authenticated. Now fetch the users registered device
+            deviceID = database.getUserDevice(username)
             if dbuser.admin is True:
-                return returnresult(True,"Authenticated admin",False, False, True)
+                return returnresult(True,"Authenticated admin",False, False, True, deviceID)
             #Check for permanent user Status (1 below admin status)
             elif dbuser.permuser:
-                return returnresult(True,"Authenticated admin",False, True, False)
+                return returnresult(True,"Authenticated admin",False, True, False, deviceID)
             #Checks if user is temporary and if the date is expired
             elif (dbuser.expirationDate != 'False' and user.isExpired(dbuser.expirationDate)):
-                return returnresult(False, "Temporary user expired", True, False, False)
-            return returnresult(True, "Authenticated temporary user", True, False, False)
+                return returnresult(False, "Temporary user expired", True, False, False, deviceID)
+            return returnresult(True, "Authenticated temporary user", True, False, False, deviceID)
     #User was not found in the database - Check if the system admin
     if (username == app.config['USERNAME'] and password == app.config['PASSWORD']):
-        return returnresult(True, "Authenticated admin", False, False, True)
-    return returnresult(False, "Unauthenticated", False, False, False)
+        return returnresult(True, "Authenticated admin", False, False, True, -18)
+    return returnresult(False, "Unauthenticated", False, False, False, 0)
 
 @app.route('/authenticate/', methods=['POST'])
 # GET - None
