@@ -485,7 +485,7 @@ def authenticateUserAPI():
         username = request.json['username']
         password = request.json['password']
         result = authenticateUser(username,password)
-        return json.dumps({'isAuth':result.isauthorised, 'Message':result.message, 'isTemp':result.tempuser, 'isPerm':result.permuser, 'isAdmin':result.adminuser}), 200, {'ContentType':'application/json'} 
+        return json.dumps({'isAuth':result.isauthorised, 'Message':result.message, 'isTemp':result.tempuser, 'isPerm':result.permuser, 'isAdmin':result.adminuser, "deviceID":result.deviceID}), 200, {'ContentType':'application/json'} 
     return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 #@auth.verify_password
