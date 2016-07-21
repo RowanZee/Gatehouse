@@ -32,7 +32,7 @@ class Database:
             return False
 
     # CREATE NEW USER
-    def createNewUser(self, username, password, deviceid=0, cellphone=0, admin, permuser, parentuser, expirationDate, day1, day2, day3, day4, day5, day6, day7):
+    def createNewUser(self, username, password, admin, permuser, parentuser, expirationDate, day1, day2, day3, day4, day5, day6, day7, deviceid=0, cellphone=0):
         try:
             newUser = UserModel(username, password, deviceid, cellphone, admin, permuser, parentuser, expirationDate)
             newUser.weekday = [day1, day2, day3, day4, day5, day6, day7]
