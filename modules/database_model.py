@@ -12,6 +12,8 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
     password = db.Column(db.String(120))
+    deviceid = db.Column(db.String(120))
+    cellphone = db.Column(db.Varchar(10))
     admin = db.Column(db.Boolean())
     permuser = db.Column(db.Boolean())
     parentuser = db.Column(db.String(80))
