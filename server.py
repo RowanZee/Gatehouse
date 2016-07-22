@@ -345,6 +345,18 @@ def removeuser():
     else:
         return 'fail'
 
+@app.route('/savedevice/', methods=['POST'])
+# GET - None
+# POST - Update the user deviceID
+def updateDeviceID():
+    if request.headers['Content-Type'] == 'application/json':
+        username = request.json['username']
+        deviceid = request.json['deviceid']
+        result = editUserDevice(username,deviceid)
+        if result is True:
+            return json.dumps(result), 200, {'ContentType':'application/json'} 
+        return json.dumps({'error':True}), 417, {'ContentType':'application/json'} 
+    return json.dumps({'isAuth':False}), 401, {'ContentType':'application/json'} 
 
 @app.route('/toggledoor/', methods=['POST'])
 # GET - None

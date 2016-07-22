@@ -140,3 +140,14 @@ class Database:
         else:
             user = None
         return user.deviceid
+
+    # EDIT USER DEVICEID
+    def editUserDevice(self, username, deviceID):
+        try:
+            user = self.getUser(username)
+            user.deviceid = deviceID
+
+            db.session.commit()
+            return True
+        except:
+            return False
